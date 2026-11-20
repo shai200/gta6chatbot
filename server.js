@@ -16,7 +16,7 @@ const PORT = Number(process.env.PORT || 3000);
 const HOST = process.env.HOST || '0.0.0.0';
 const BASE_URL = (process.env.BETTERPROXY_BASE_URL || 'https://api.betterproxy.ai/v1').replace(/\/+$/, '');
 const API_KEY = process.env.BETTERPROXY_API_KEY || '';
-const MODEL = process.env.BETTERPROXY_MODEL || 'gpt-4o-mini';
+const MODEL = process.env.BETTERPROXY_MODEL || 'gpt-5.4';
 const MONITOR_TOKEN = process.env.MONITOR_TOKEN || '';
 const LOG_FILE = path.resolve(ROOT, process.env.CACHE_LOG_FILE || 'logs/cache.jsonl');
 const PUBLIC_DIR = path.join(ROOT, 'public');
@@ -103,9 +103,24 @@ function readCacheHeaders(h) {
   };
 }
 
+/**
+ * BetterProxy leaves its X-Cache-* headers off streaming responses, so when
+ * they are missing we infer the result from the stream's shape: a cached
+ * answer is replayed as one content chunk, a live one arrives token by token.
+ */
+function inferCache(rec) {
+  if (rec.cacheHit != null) return;
+  if (rec.contentChunks > 1) rec.cacheHit = false;
+  else if (rec.outputChars >= 24) rec.cacheHit = true;
+  else return; // a one-token answer looks the same either way
+  rec.cacheStatus = rec.cacheHit ? 'HIT' : 'MISS';
+  rec.cacheSource = 'inferred';
+}
+
 async function record(r) {
   applyToStats(r);
-  const tag = r.error ? 'ERROR' : r.cacheHit === true ? 'HIT  ' : r.cacheHit === false ? 'MISS ' : '?    ';
+  const base = r.error ? 'ERROR' : r.cacheHit === true ? 'HIT' : r.cacheHit === false ? 'MISS' : '?';
+  const tag = (base + (r.cacheSource === 'inferred' ? '~' : '')).padEnd(5);
   console.log(
     `[cache] ${tag} status=${r.httpStatus ?? '-'} ttfb=${r.ttfbMs ?? '-'}ms total=${r.totalMs}ms ` +
     `proxy=${r.proxyLatencyMs ?? '-'}ms tokens=${r.tokensCharged ?? '-'} credits=${r.creditsRemaining ?? '-'} ` +
@@ -173,7 +188,8 @@ async function handleChat(req, res) {
     promptChars: lastUser.content.length, turns: messages.length,
     httpStatus: null, cacheHit: null, cacheStatus: null, proxyLatencyMs: null,
     ttfbMs: null, totalMs: null, tokensCharged: null, creditsRemaining: null,
-    billingMode: null, rtkSavedTokens: null, outputChars: 0, aborted: false, error: null,
+    billingMode: null, rtkSavedTokens: null, outputChars: 0, contentChunks: 0,
+    cacheSource: null, aborted: false, error: null,
   };
   const started = performance.now();
   const ac = new AbortController();
@@ -191,6 +207,7 @@ async function handleChat(req, res) {
     });
     rec.httpStatus = upstream.status;
     Object.assign(rec, readCacheHeaders(upstream.headers));
+    if (rec.cacheHit != null) rec.cacheSource = 'header';
 
     if (!upstream.ok) {
       const text = (await upstream.text()).slice(0, 500);
@@ -201,6 +218,7 @@ async function handleChat(req, res) {
       if (!text) return;
       if (rec.ttfbMs == null) rec.ttfbMs = Math.round(performance.now() - started);
       rec.outputChars += text.length;
+      rec.contentChunks++;
       send({ type: 'delta', text });
     };
 
@@ -230,6 +248,8 @@ async function handleChat(req, res) {
         }
       }
     }
+    if (!rec.outputChars) throw new Error(`Model "${MODEL}" returned an empty answer.`);
+    inferCache(rec);
     send({ type: 'done' });
   } catch (e) {
     if (!rec.aborted) {

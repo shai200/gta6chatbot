@@ -53,6 +53,7 @@
       </table>
       <div class="empty" id="empty" hidden>No requests yet. Ask the chatbot something.</div>
     </div>
+    <p class="meta" style="margin-top:14px">~ inferred: BetterProxy omits its cache headers on streaming responses, so the result is read from the stream itself (a cached answer arrives as one chunk). Tokens charged and credits are only reported when those headers are present.</p>
   </div>
   <script>
     const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -81,7 +82,7 @@
         document.getElementById('empty').hidden = recent.length > 0;
         document.getElementById('rows').innerHTML = recent.map((r) => {
           const c = r.error ? 'ERR' : r.cacheHit === true ? 'HIT' : r.cacheHit === false ? 'MISS' : 'UNK';
-          const label = c === 'ERR' ? `ERR ${r.httpStatus ?? ''}` : c === 'UNK' ? (r.aborted ? 'STOPPED' : 'N/A') : c;
+          const label = c === 'ERR' ? `ERR ${r.httpStatus ?? ''}` : c === 'UNK' ? (r.aborted ? 'STOPPED' : 'N/A') : c + (r.cacheSource === 'inferred' ? ' ~' : '');
           return `<tr><td>${new Date(r.ts).toLocaleTimeString()}</td><td><span class="pill ${c}">${label}</span></td><td class="num">${ms(r.ttfbMs)}</td><td class="num">${ms(r.totalMs)}</td><td class="num">${ms(r.proxyLatencyMs)}</td><td class="num">${n(r.tokensCharged)}</td><td class="num">${usd(r.creditsRemaining)}</td><td class="prompt" title="${esc(r.error || '')}">${esc(r.promptPreview)}</td></tr>`;
         }).join('');
       } catch (e) {
