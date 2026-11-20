@@ -1,0 +1,14 @@
+{
+  "name": "leonida-intel",
+  "version": "1.0.0",
+  "description": "GTA VI companion chatbot, streamed through BetterProxy with cache monitoring",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=21.7"
+  }
+}
