@@ -1,0 +1,2157 @@
+[
+  {
+    "id": "tip-001",
+    "category": "beginner_tips",
+    "question": "How do I stop losing my cash when I die?",
+    "answer": "Don't walk around with a lot of cash: dying or getting busted wipes what you're carrying and any stash bags. Deposit it at an ATM (the BuckMe phone app has an ATM Finder) or, early on, hide it under the loose floorboard in Jason's bedroom.",
+    "sources": [
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/",
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi",
+      "https://www.polygon.com/gta-6-what-to-do-first-how-to-get-started/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cash",
+      "bank",
+      "ATM",
+      "BuckMe",
+      "death"
+    ]
+  },
+  {
+    "id": "tip-002",
+    "category": "beginner_tips",
+    "question": "Is there a limit on how much cash I can carry?",
+    "answer": "Yes, reportedly $20,000 on hand. Once you hit it you can't pick up more cash, so bank it before a big job.",
+    "sources": [
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "cash",
+      "wallet",
+      "limit"
+    ]
+  },
+  {
+    "id": "tip-003",
+    "category": "beginner_tips",
+    "question": "Should I grind money in Chapter 1?",
+    "answer": "No. Guides agree that the cash you build up in Chapter 1 is lost when the chapter ends, so just play the story. Spend spare money on gear that carries over, like weapons, or put it into Family Savings.",
+    "sources": [
+      "https://www.powerpyx.com/gta-6-money-guide-how-to-get-money-fast/",
+      "https://gta.tech4gamers.com/gta-6/guides/make-money-each-chapter/",
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "chapter 1",
+      "money",
+      "family savings",
+      "missable"
+    ]
+  },
+  {
+    "id": "tip-004",
+    "category": "beginner_tips",
+    "question": "How do I use Focus mode?",
+    "answer": "Click both sticks in together (L3+R3 / LS+RS). In a gunfight it slows time so you can hit weak spots. Outside combat it doesn't drain and highlights things around you: enemies in red, items you can use in yellow, cash in green.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-safe-codes/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "focus",
+      "controls",
+      "loot"
+    ]
+  },
+  {
+    "id": "tip-005",
+    "category": "beginner_tips",
+    "question": "How do I find hidden loot and notes?",
+    "answer": "Turn on Focus while exploring. It highlights nearby loot, cash and notes, which can include safe codes, and it can even show valuables in car trunks and animal tracks.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "focus",
+      "loot",
+      "safe code"
+    ]
+  },
+  {
+    "id": "tip-006",
+    "category": "beginner_tips",
+    "question": "Do I need to eat, sleep and work out?",
+    "answer": "It isn't required, but it helps a lot. Health, Stamina and Focus are boosted by sleeping, eating and showering, and grow long-term through training: weights raise health, cardio raises stamina, and calm activities like fishing or pool raise Focus. Focus gains are permanent.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "stats",
+      "health",
+      "stamina",
+      "focus",
+      "fitness"
+    ]
+  },
+  {
+    "id": "tip-007",
+    "category": "beginner_tips",
+    "question": "How do gym workouts work?",
+    "answer": "Strength sets use the triggers: press both in fast and let go slowly, and finish the set before your stamina runs out. Stop once the fitness ring in the phone app is closed, then have a protein bar or shake. Roughly once per in-game day the workout window opens again.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "gym",
+      "workout",
+      "fitness"
+    ]
+  },
+  {
+    "id": "tip-008",
+    "category": "beginner_tips",
+    "question": "Does my partner train too if we go to the gym together?",
+    "answer": "Yes. If Jason and Lucia go to a gym together, both get the workout no matter which one you're playing.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "gym",
+      "partner"
+    ]
+  },
+  {
+    "id": "tip-009",
+    "category": "beginner_tips",
+    "question": "What's the fastest way to raise Focus early?",
+    "answer": "At Jason's house, feed his pet snake (+3% Focus, once a day) and shoot hoops at the basketball net below the house (+2% per basket, up to five). You won't live there forever, so do it while you can.",
+    "sources": [
+      "https://www.polygon.com/gta-6-what-to-do-first-how-to-get-started/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "focus",
+      "chapter 1",
+      "snake",
+      "basketball"
+    ]
+  },
+  {
+    "id": "tip-010",
+    "category": "beginner_tips",
+    "question": "How do I heal in GTA 6?",
+    "answer": "Use Zombix, a pill bottle and the main healing item. Use it from your loadout. You can buy more at grocery stores and often find it in hideouts, bathrooms and back rooms.",
+    "sources": [
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "healing",
+      "zombix",
+      "health"
+    ]
+  },
+  {
+    "id": "tip-011",
+    "category": "beginner_tips",
+    "question": "Is there fast travel?",
+    "answer": "Not by picking a point on the map. Instead you can use the RydeMe app, where about $100 extra skips the ride, take buses and trains on their schedules, or switch to your other character, who is usually near the safehouse.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "fast travel",
+      "RydeMe",
+      "train",
+      "bus"
+    ]
+  },
+  {
+    "id": "tip-012",
+    "category": "beginner_tips",
+    "question": "Can the car drive itself to my waypoint?",
+    "answer": "Yes. Set a waypoint, hold Down on the D-pad for the cinematic camera options, and turn on auto-drive. Your character drives there following traffic rules, which also helps you keep a low profile.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "auto-drive",
+      "driving",
+      "cinematic camera"
+    ]
+  },
+  {
+    "id": "tip-013",
+    "category": "beginner_tips",
+    "question": "Should I make manual saves?",
+    "answer": "Yes, often. Each chapter centres on a different safehouse and you can't go back, so keep a save per chapter and one before big missions. There's no mission replay, and an 'Irredeemable' profile can't be undone without an old save.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.polygon.com/gta-6-what-to-do-first-how-to-get-started/",
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "save",
+      "replay",
+      "chapters"
+    ]
+  },
+  {
+    "id": "tip-014",
+    "category": "beginner_tips",
+    "question": "I messed up during a mission, what do I do?",
+    "answer": "Pause and pick 'retry checkpoint'. Inside story missions it undoes wrong turns, accidental kills and so on.",
+    "sources": [
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "missions",
+      "checkpoint",
+      "retry"
+    ]
+  },
+  {
+    "id": "tip-015",
+    "category": "beginner_tips",
+    "question": "I don't know what to do next. Where do I look?",
+    "answer": "Open the phone (D-pad Up) and press Square/X to see Reminders: articles, Snapmatic posts, texts to answer and people to call. Some lead to side-mission chains.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "phone",
+      "reminders",
+      "side missions"
+    ]
+  },
+  {
+    "id": "tip-016",
+    "category": "beginner_tips",
+    "question": "Are magazines and flyers worth reading?",
+    "answer": "Yes. Fully flipping through some reading material adds phone contacts or marks fishing spots on your map.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "magazines",
+      "reading",
+      "contacts"
+    ]
+  },
+  {
+    "id": "tip-017",
+    "category": "beginner_tips",
+    "question": "Should I check out random events?",
+    "answer": "Yes. Unmarked random events are everywhere: people arguing, someone calling to you, odd sounds. They give fun scenes, side activities and sometimes loot or extra missions. Focus helps you pick out voices and noises.",
+    "sources": [
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/",
+      "https://www.polygon.com/gta-6-what-to-do-first-how-to-get-started/",
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "random events",
+      "exploration"
+    ]
+  },
+  {
+    "id": "tip-018",
+    "category": "beginner_tips",
+    "question": "Should I explore or play the story first?",
+    "answer": "Play the story for the first few hours. Selling cars, fast travel and most side activities only open after about half of Chapter 1, and the world opens up properly from Chapter 2. Money gets much easier later, so don't stress about it early.",
+    "sources": [
+      "https://www.polygon.com/gta-6-what-to-do-first-how-to-get-started/",
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi",
+      "https://gta.tech4gamers.com/gta-6/guides/make-money-each-chapter/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "story",
+      "early game",
+      "money"
+    ]
+  },
+  {
+    "id": "tip-019",
+    "category": "beginner_tips",
+    "question": "Can I play without killing people?",
+    "answer": "Mostly, yes, though it's hard. Headshots and heart shots kill (red hit marker), while limb and joint shots disable (yellow). You can also knock people out with a gun butt. Fewer kills means less police heat.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "non-lethal",
+      "combat",
+      "criminal profile"
+    ]
+  },
+  {
+    "id": "tip-020",
+    "category": "beginner_tips",
+    "question": "What is the criminal profile?",
+    "answer": "The game tracks how Jason and Lucia behave. Needless violence, like running people over or shooting bystanders, pushes them from 'Professional' towards 'Violent'/'Psycho', and that has story consequences. Reach 'Irredeemable' and there's no way back.",
+    "sources": [
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi",
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "criminal profile",
+      "karma",
+      "ending"
+    ]
+  },
+  {
+    "id": "tip-021",
+    "category": "beginner_tips",
+    "question": "What do the map building colours mean?",
+    "answer": "Dark blue buildings can be entered somehow, through a door, vent or window. Light blue ones can't be entered at all.",
+    "sources": [
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "map",
+      "interiors"
+    ]
+  },
+  {
+    "id": "tip-022",
+    "category": "beginner_tips",
+    "question": "What does the hourglass icon on the map mean?",
+    "answer": "It marks a mission that's only available for a limited time, so do it before it disappears.",
+    "sources": [
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "map",
+      "missable",
+      "missions"
+    ]
+  },
+  {
+    "id": "tip-023",
+    "category": "beginner_tips",
+    "question": "Why do pedestrians attack me?",
+    "answer": "Lots of Leonida locals carry guns. Insult people or bump their cars and they may fight back or chase you down in road rage.",
+    "sources": [
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "NPCs",
+      "road rage"
+    ]
+  },
+  {
+    "id": "tip-024",
+    "category": "beginner_tips",
+    "question": "Should I carry rifles openly?",
+    "answer": "No. A visible longarm worries people, and cops may try to arrest you even if you're not wanted. Keep big guns stowed and carry hidden sidearms.",
+    "sources": [
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "weapons",
+      "police",
+      "stealth"
+    ]
+  },
+  {
+    "id": "tip-025",
+    "category": "beginner_tips",
+    "question": "How does the wanted/heat system work?",
+    "answer": "Stars still show your wanted level, but now there's also 'heat'. Police identify you by your face, outfit, visible weapon, vehicle, CCTV footage and whether your partner is with you. Deal with each one out of sight (mask off, change clothes, hide weapons, swap cars, destroy CCTV, split up) and they lose you.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "wanted",
+      "heat",
+      "police"
+    ]
+  },
+  {
+    "id": "tip-026",
+    "category": "beginner_tips",
+    "question": "How many stars do different crimes give?",
+    "answer": "As a rough guide, stealing a car is 1 star, robbing a store is 3 or more, and killing an officer adds stars (one kill quickly gets you to 3).",
+    "sources": [
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi",
+      "https://www.gamespot.com/articles/how-to-get-a-six-star-wanted-level-in-gta-6/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "wanted",
+      "stars",
+      "police"
+    ]
+  },
+  {
+    "id": "tip-027",
+    "category": "beginner_tips",
+    "question": "Forgot my mask, how do I avoid being recognised?",
+    "answer": "Put on (or take off) a hat and sunglasses. For your outfit, use any clothing store's changing room (you don't have to buy anything) or keep a spare outfit in your car's trunk.",
+    "sources": [
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/",
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi",
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "disguise",
+      "mask",
+      "clothes",
+      "heat"
+    ]
+  },
+  {
+    "id": "tip-028",
+    "category": "beginner_tips",
+    "question": "Should I use my own car for crimes?",
+    "answer": "No. If police link your car to a crime scene it gets impounded. Hotwire a getaway car, park it nearby, then dump it.",
+    "sources": [
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi",
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "getaway",
+      "impound",
+      "vehicles"
+    ]
+  },
+  {
+    "id": "tip-029",
+    "category": "beginner_tips",
+    "question": "My car got impounded, how do I get it back?",
+    "answer": "Steal it back from the impound lot, or open the Scooter Bros app and have it delivered for a few hundred dollars (trunk contents usually included).",
+    "sources": [
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/",
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "impound",
+      "Scooter Bros",
+      "vehicles"
+    ]
+  },
+  {
+    "id": "tip-030",
+    "category": "beginner_tips",
+    "question": "Best way to escape the cops?",
+    "answer": "Grab a car (pulling a driver out is faster than breaking into a parked one), race along the highway, then go off-road. In heavy chases, try going on foot through alleys, tree cover or a covered parking garage, which helicopters can't see into.",
+    "sources": [
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/",
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "police",
+      "escape",
+      "chase"
+    ]
+  },
+  {
+    "id": "tip-031",
+    "category": "beginner_tips",
+    "question": "How do I deal with police helicopters and pursuit cars non-lethally?",
+    "answer": "Shoot out a pursuer's tyre or two to spin it out. Helicopters pull back if you fire enough shots near them, and the pilot says so over the police radio.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "police",
+      "helicopter",
+      "non-lethal"
+    ]
+  },
+  {
+    "id": "tip-032",
+    "category": "beginner_tips",
+    "question": "How do I get a 6-star wanted level, and can I lose it?",
+    "answer": "It takes extreme, prolonged chaos. PC Gamer only managed it by stealing a tank from a military base and blowing up vehicles, while GameSpot got there by surviving a 20-minute chase. Once you have 6 stars the law never stops hunting you, so save first.",
+    "sources": [
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-six-stars/",
+      "https://www.gamespot.com/articles/how-to-get-a-six-star-wanted-level-in-gta-6/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "wanted",
+      "six stars",
+      "tank"
+    ]
+  },
+  {
+    "id": "tip-033",
+    "category": "beginner_tips",
+    "question": "Any tips for robbing a store?",
+    "answer": "Check the store's security level and expected take on the map first. Ignore customers and go straight for the register and the back-room safe. When you hear sirens, stop looting and leave, because losing everything is worse than leaving some behind.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/",
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "robbery",
+      "stores"
+    ]
+  },
+  {
+    "id": "tip-034",
+    "category": "beginner_tips",
+    "question": "Should I rob places solo or as a pair?",
+    "answer": "Low-security spots are fine alone. Medium and high security are much easier with both characters (one handles the crowd). You can invite your partner from the map icon with Triangle/Y.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "robbery",
+      "partner",
+      "co-op"
+    ]
+  },
+  {
+    "id": "tip-035",
+    "category": "beginner_tips",
+    "question": "Why use back doors for robberies?",
+    "answer": "Once you get the snap gun (Chapter 3) you can pick back-door locks without setting off alarms, deal with back-room staff quietly, destroy the CCTV and disable alarms before anyone notices.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "robbery",
+      "back door",
+      "snap gun",
+      "CCTV"
+    ]
+  },
+  {
+    "id": "tip-036",
+    "category": "beginner_tips",
+    "question": "How do I get a safe code?",
+    "answer": "Use Focus to spot a written code nearby. If there isn't one, aim at an employee and keep choosing Threaten until the option changes to 'Safe code?'. Codes for ordinary robbery safes are randomised, so online lists won't help.",
+    "sources": [
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-safe-codes/",
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/",
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "safe code",
+      "robbery",
+      "focus"
+    ]
+  },
+  {
+    "id": "tip-037",
+    "category": "beginner_tips",
+    "question": "Can I blow a safe open?",
+    "answer": "Yes, sticky bombs work on code safes. Some safes can also be picked with the right tool.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-safe-codes/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "safe",
+      "sticky bomb"
+    ]
+  },
+  {
+    "id": "tip-038",
+    "category": "beginner_tips",
+    "question": "Are there any fixed safe codes?",
+    "answer": "A few story and side-location safes have the same code for everyone. GamesRadar lists Brooks Boatworks 6823, La Cascara Motel 6969, the trailer south of Grassrivers 44017 and the Nova Auto Junkyard 7777.",
+    "sources": [
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-safe-codes/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "safe code",
+      "fixed codes"
+    ]
+  },
+  {
+    "id": "tip-039",
+    "category": "beginner_tips",
+    "question": "What happens to loot bags if I die?",
+    "answer": "You lose the bags you're carrying along with your cash. Bags left in a car are lost too if it's impounded. After a big robbery, head straight to a fence.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "stash bags",
+      "death",
+      "fence"
+    ]
+  },
+  {
+    "id": "tip-040",
+    "category": "beginner_tips",
+    "question": "How many loot bags can I carry?",
+    "answer": "Two per character. Car trunks hold more (vans and trucks around eight), and motorcycles hold none. Pass bags to your partner with D-pad Right, then Circle/B.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "stash bags",
+      "inventory"
+    ]
+  },
+  {
+    "id": "tip-041",
+    "category": "money",
+    "question": "What's the fastest way to make money?",
+    "answer": "It depends on the chapter. Chapter 2: sell untracked cars to Moses. Chapter 3: jewelry stores, small banks/Payday Loans, and supercars for Randy. End of Chapter 4: large bank vaults, the best payout in the game.",
+    "sources": [
+      "https://www.powerpyx.com/gta-6-money-guide-how-to-get-money-fast/",
+      "https://gta.tech4gamers.com/gta-6/guides/make-money-each-chapter/",
+      "https://www.gamespot.com/articles/best-ways-to-make-money-fast-in-gta-6/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "money",
+      "chapters"
+    ]
+  },
+  {
+    "id": "tip-042",
+    "category": "money",
+    "question": "How do I sell cars to Moses?",
+    "answer": "After the Chapter 2 mission 'Moses', steal cars with no tracker and drive them to his Port Gellhorn garage for about $1,000 or more each. There's a short cooldown (about 2 minutes) between sales, and he refuses cars stolen too close to his garage.",
+    "sources": [
+      "https://www.powerpyx.com/gta-6-money-guide-how-to-get-money-fast/",
+      "https://gta.tech4gamers.com/gta-6/guides/make-money-each-chapter/",
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "Moses",
+      "cars",
+      "chapter 2"
+    ]
+  },
+  {
+    "id": "tip-043",
+    "category": "money",
+    "question": "How much do jewelry store robberies pay?",
+    "answer": "About $10,000 to $25,000 each, from Chapter 3 (Yasmani's Jewelry Jobs). Shut off the back-room security, empty the cases and the safe, then sell the jewelry to Yasmani.",
+    "sources": [
+      "https://www.powerpyx.com/gta-6-money-guide-how-to-get-money-fast/",
+      "https://gta.tech4gamers.com/gta-6/guides/make-money-each-chapter/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "jewelry",
+      "Yasmani",
+      "chapter 3"
+    ]
+  },
+  {
+    "id": "tip-044",
+    "category": "money",
+    "question": "How does Randy's Wish List work?",
+    "answer": "Midway through Chapter 3 you get the Key Cloner and Randy's list of 18 high-end cars. Delivering them in perfect condition pays around $30,000+. He marks some parked ones, and texting him (via Reminders) gets more tips.",
+    "sources": [
+      "https://www.powerpyx.com/gta-6-money-guide-how-to-get-money-fast/",
+      "https://gta.tech4gamers.com/gta-6/guides/make-money-each-chapter/",
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "Randy",
+      "supercars",
+      "chapter 3"
+    ]
+  },
+  {
+    "id": "tip-045",
+    "category": "money",
+    "question": "Can I sell tracked cars?",
+    "answer": "From early Chapter 3, Pay 'n' Spray buys cars with standard trackers (a good one is about $4,000+). Cars with advanced trackers go to Randy, and later Pay 'n' Spray takes those too.",
+    "sources": [
+      "https://www.powerpyx.com/gta-6-money-guide-how-to-get-money-fast/",
+      "https://gta.tech4gamers.com/gta-6/guides/make-money-each-chapter/",
+      "https://www.shacknews.com/article/151427/disable-vehicle-trackers-gta6"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "Pay n Spray",
+      "trackers",
+      "cars"
+    ]
+  },
+  {
+    "id": "tip-046",
+    "category": "money",
+    "question": "How do I rob a bank vault?",
+    "answer": "Near the end of Chapter 4, do the optional 'That's Where The Money Is… (Wait at the Cafe)'. Tail an armoured security van to a large bank and slip into the vault while the guard has it open. Vaults pay roughly $65,000 to $205,000 and give you 4 stars straight away, and a fast motorbike helps you escape.",
+    "sources": [
+      "https://www.powerpyx.com/gta-6-money-guide-how-to-get-money-fast/",
+      "https://gta.tech4gamers.com/gta-6/guides/make-money-each-chapter/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "bank vault",
+      "heist",
+      "chapter 4"
+    ]
+  },
+  {
+    "id": "tip-047",
+    "category": "money",
+    "question": "How do I find security vans for vault jobs?",
+    "answer": "Buy a tip from Yasmani for $10,000. It's only available once you've done his earlier jobs, including robbing two Payday Loans.",
+    "sources": [
+      "https://www.powerpyx.com/gta-6-money-guide-how-to-get-money-fast/",
+      "https://gta.tech4gamers.com/gta-6/guides/make-money-each-chapter/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "Yasmani",
+      "security van",
+      "bank vault"
+    ]
+  },
+  {
+    "id": "tip-048",
+    "category": "money",
+    "question": "When can I rob banks and Payday Loans?",
+    "answer": "Wait until Chapter 3. Their cash has dye packs until the mission 'Credit Check' gives you the Dye Pack Jammer and marks 14 small banks and 7 Payday Loans.",
+    "sources": [
+      "https://gta.tech4gamers.com/gta-6/guides/make-money-each-chapter/",
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "banks",
+      "dye pack",
+      "chapter 3"
+    ]
+  },
+  {
+    "id": "tip-049",
+    "category": "money",
+    "question": "How much is the Family Savings goal?",
+    "answer": "Family Savings maxes out at $2 million (quest 'Save for the Future'), and reaching the max is tied to the best ending.",
+    "sources": [
+      "https://www.powerpyx.com/gta-6-money-guide-how-to-get-money-fast/",
+      "https://www.gamespot.com/articles/does-gta-6-have-multiple-endings/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "family savings",
+      "ending"
+    ]
+  },
+  {
+    "id": "tip-050",
+    "category": "money",
+    "question": "Is robbing other criminals worth it?",
+    "answer": "Yes, it's one of the best early paydays. When you hear alarms, sirens or gunshots, take down the crew fleeing with duffel bags and grab them (non-lethally if you like), then get out fast because their heat moves to you.",
+    "sources": [
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/",
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "criminals",
+      "loot",
+      "early game"
+    ]
+  },
+  {
+    "id": "tip-051",
+    "category": "money",
+    "question": "What are gang operations?",
+    "answer": "Yellow robbery icons on the map. The map shows the gang, security and possible take. They hold drugs, cash, safes and unique items, and they respawn after a while. There are 39 in total.",
+    "sources": [
+      "https://www.gamespot.com/articles/best-ways-to-make-money-fast-in-gta-6/",
+      "https://www.powerpyx.com/gta-6-all-illegal-gang-operations-locations/",
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "gang operations",
+      "hideouts",
+      "narcotics"
+    ]
+  },
+  {
+    "id": "tip-052",
+    "category": "money",
+    "question": "Is the demolition derby a good money maker?",
+    "answer": "Yes. Ambrosia Raceway's demolition races pay about $3,800 on the oval and roughly double on the figure-eight. You win by wrecking every other car, and you can rent a car at the track.",
+    "sources": [
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "derby",
+      "races",
+      "Ambrosia Raceway"
+    ]
+  },
+  {
+    "id": "tip-053",
+    "category": "money",
+    "question": "Does hunting pay?",
+    "answer": "Yes. Jason's hunting jobs for his army buddy Bret (Chapter 2, Lummox County) pay more as they go, and big game like a large boar can earn thousands. Bret buys smaller kills straight from your trunk.",
+    "sources": [
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "hunting",
+      "Bret",
+      "Jason"
+    ]
+  },
+  {
+    "id": "tip-054",
+    "category": "money",
+    "question": "What are Pilot Pete's drops?",
+    "answer": "From Chapter 4, a pilot you met in Chapter 3 offers timed plane runs dropping packages to buyers. Each run pays about $10,000 to $20,000 if you plan an efficient route.",
+    "sources": [
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "Pilot Pete",
+      "plane",
+      "chapter 4"
+    ]
+  },
+  {
+    "id": "tip-055",
+    "category": "money",
+    "question": "How does treasure diving work?",
+    "answer": "After you meet Kenton, who runs a dive shop in Key Lento, he marks dive spots. Take a boat and scuba gear, use a metal detector to find treasure, and he pays you, eventually tens of thousands in total.",
+    "sources": [
+      "https://www.gamespot.com/articles/best-ways-to-make-money-fast-in-gta-6/",
+      "https://gtapoint.com/gta-6-collectibles-guide/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "diving",
+      "Kenton",
+      "Key Lento"
+    ]
+  },
+  {
+    "id": "tip-056",
+    "category": "money",
+    "question": "How do I pay the Starlet Motel rent as Lucia?",
+    "answer": "With Jason laid up, rob the small green-marked stores in Port Gellhorn (one person can handle them), mug people, or sell cars to Moses until you have the rent.",
+    "sources": [
+      "https://www.gamespot.com/articles/best-ways-to-make-money-fast-in-gta-6/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "Starlet Motel",
+      "Lucia",
+      "chapter 2"
+    ]
+  },
+  {
+    "id": "tip-057",
+    "category": "money",
+    "question": "How much do I need for the move to Vice City?",
+    "answer": "Dre'Quan needs at least $15,000 before he finds you a place, through the Chapter 2 task 'Prepare for Vice City'. Pawn shop robberies and Moses' car jobs help.",
+    "sources": [
+      "https://gta.tech4gamers.com/gta-6/guides/make-money-each-chapter/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "Vice City",
+      "Dre'Quan",
+      "chapter 2"
+    ]
+  },
+  {
+    "id": "tip-058",
+    "category": "money",
+    "question": "Is mugging people worth it?",
+    "answer": "Not really. Holding up civilians usually gets a few dollars to a couple hundred at most. Go for registers, safes and bigger targets instead.",
+    "sources": [
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/",
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "mugging",
+      "money"
+    ]
+  },
+  {
+    "id": "tip-059",
+    "category": "money",
+    "question": "Can I steal ATMs?",
+    "answer": "Yes. Fit a winch to a truck and pull ATMs out of walls, but cracking them is loud and slow, so the cops will come.",
+    "sources": [
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "ATM",
+      "winch",
+      "truck"
+    ]
+  },
+  {
+    "id": "tip-060",
+    "category": "money",
+    "question": "Where else can I find small cash?",
+    "answer": "Rooftop lockboxes, car trunks and washed-up boats on the coast (sometimes with drugs) all pay small amounts.",
+    "sources": [
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "loot",
+      "rooftops",
+      "coast"
+    ]
+  },
+  {
+    "id": "tip-061",
+    "category": "money",
+    "question": "Which fence pays the most?",
+    "answer": "Yasmani (Little Cuba, Vice City) pays the most for jewelry and marked bills, and Tyrone (La Perle) for narcotics. Both unlock in Chapter 3.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://gamerant.com/gta-6-all-fences-locations-prices/",
+      "https://www.gtabase.com/gta-6/articles/gta-6-fence-locations-all-fences-what-they-buy"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "fence",
+      "Yasmani",
+      "Tyrone"
+    ]
+  },
+  {
+    "id": "tip-062",
+    "category": "money",
+    "question": "Who are the early fences?",
+    "answer": "In Chapter 1 it's Brian and Donnie in Key Lento, then Dunk in Port Gellhorn in Chapter 2. All three pay low rates. Moses (Chapter 2) and Randy (Chapter 3) only buy cars.",
+    "sources": [
+      "https://gamerant.com/gta-6-all-fences-locations-prices/",
+      "https://www.gtabase.com/gta-6/articles/gta-6-fence-locations-all-fences-what-they-buy"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "fence",
+      "Brian",
+      "Donnie",
+      "Dunk"
+    ]
+  },
+  {
+    "id": "tip-063",
+    "category": "money",
+    "question": "Do I have to drive to the fence myself?",
+    "answer": "No. Give your stash bags to your partner and they'll sell them for you (sometimes for slightly less). Later, fences can collect from your garages for a fee.",
+    "sources": [
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi",
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.gtabase.com/gta-6/articles/gta-6-fence-locations-all-fences-what-they-buy"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "fence",
+      "partner",
+      "pickup"
+    ]
+  },
+  {
+    "id": "tip-064",
+    "category": "money",
+    "question": "How do I see what a fence pays?",
+    "answer": "Fences appear on the map as green icons with initials. Hover over one to see its rates for narcotics, jewelry and marked bills.",
+    "sources": [
+      "https://www.gtabase.com/gta-6/articles/gta-6-fence-locations-all-fences-what-they-buy"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "fence",
+      "map"
+    ]
+  },
+  {
+    "id": "tip-065",
+    "category": "money",
+    "question": "Can I bank loot directly?",
+    "answer": "No. Narcotics, jewelry and marked bills aren't worth anything until a fence buys them.",
+    "sources": [
+      "https://www.gtabase.com/gta-6/articles/gta-6-fence-locations-all-fences-what-they-buy",
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "fence",
+      "loot",
+      "bank"
+    ]
+  },
+  {
+    "id": "tip-066",
+    "category": "vehicles",
+    "question": "How do I check a car before stealing it?",
+    "answer": "Hold D-pad Up to open the WAiNK app and point it at the car. It shows the security, sale value and registration cost.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://www.gtabase.com/gta-6/articles/gta-6-fence-locations-all-fences-what-they-buy"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "WAiNK",
+      "carjacking"
+    ]
+  },
+  {
+    "id": "tip-067",
+    "category": "vehicles",
+    "question": "How do I steal a car without the alarm?",
+    "answer": "Use the Slim Jim from Moses (Chapter 2) to pick the lock instead of smashing the window, then hotwire it.",
+    "sources": [
+      "https://www.gamespot.com/articles/how-to-steal-cars-and-remove-trackers-in-gta-6/",
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "Slim Jim",
+      "alarm",
+      "Moses"
+    ]
+  },
+  {
+    "id": "tip-068",
+    "category": "vehicles",
+    "question": "How do I steal keyless cars?",
+    "answer": "You need the Key Cloner from Randy, which you get halfway through the story in Chapter 3. After its minigame you can drive off without hotwiring.",
+    "sources": [
+      "https://www.gamespot.com/articles/how-to-steal-cars-and-remove-trackers-in-gta-6/",
+      "https://www.powerpyx.com/gta-6-money-guide-how-to-get-money-fast/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "Key Cloner",
+      "keyless",
+      "Randy"
+    ]
+  },
+  {
+    "id": "tip-069",
+    "category": "vehicles",
+    "question": "What's the difference between standard and advanced trackers?",
+    "answer": "A standard tracker stops you modifying the car until it's registered. An advanced tracker reports your position to police whenever you drive slowly for a few seconds, so keep your speed up and dump it far from where you're going.",
+    "sources": [
+      "https://www.gamespot.com/articles/how-to-steal-cars-and-remove-trackers-in-gta-6/",
+      "https://www.shacknews.com/article/151427/disable-vehicle-trackers-gta6",
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "trackers",
+      "police"
+    ]
+  },
+  {
+    "id": "tip-070",
+    "category": "vehicles",
+    "question": "How do I deal with advanced-tracker cars?",
+    "answer": "After you deliver the '64 Declasse Mamba GT mission car to Randy, he calls to say Pay 'n' Spray now accepts advanced-tracker cars, to sell or register.",
+    "sources": [
+      "https://www.shacknews.com/article/151427/disable-vehicle-trackers-gta6"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "trackers",
+      "Randy",
+      "Pay n Spray"
+    ]
+  },
+  {
+    "id": "tip-071",
+    "category": "vehicles",
+    "question": "How do I keep a stolen car?",
+    "answer": "Register it. Moses does untracked cars in Chapter 2, Pay 'n' Spray does standard-tracker cars from Chapter 3, and Randy does high-end cars. Fees range from a few thousand to tens of thousands. Registered cars can be called with the Scooter Bros app.",
+    "sources": [
+      "https://www.polygon.com/gta-6-keep-stolen-vehicles-weapons-register/",
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "register",
+      "Pay n Spray",
+      "Scooter Bros"
+    ]
+  },
+  {
+    "id": "tip-072",
+    "category": "vehicles",
+    "question": "Will I lose a stolen car I haven't registered?",
+    "answer": "Yes, if you abandon it, wreck it or quit the game. Parking it in your garage keeps it safe for now, but it's only yours once registered.",
+    "sources": [
+      "https://www.polygon.com/gta-6-keep-stolen-vehicles-weapons-register/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "garage",
+      "register"
+    ]
+  },
+  {
+    "id": "tip-073",
+    "category": "vehicles",
+    "question": "Where can I repair a car?",
+    "answer": "At gas stations, which is handy before selling a damaged car at Pay 'n' Spray.",
+    "sources": [
+      "https://www.shacknews.com/article/151427/disable-vehicle-trackers-gta6"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "repair",
+      "gas station"
+    ]
+  },
+  {
+    "id": "tip-074",
+    "category": "vehicles",
+    "question": "Can a tracked car block missions?",
+    "answer": "Yes. If an advanced-tracker car pings police near a mission start, the area becomes a crime zone and you can't start missions there until the heat clears.",
+    "sources": [
+      "https://www.gamespot.com/articles/how-to-steal-cars-and-remove-trackers-in-gta-6/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "trackers",
+      "missions"
+    ]
+  },
+  {
+    "id": "tip-075",
+    "category": "vehicles",
+    "question": "Can I fight back while driving?",
+    "answer": "Yes. Duck with Circle/B, hold L1/LB and press R1/RB for drive-by shots, kick sideways on a bike with Square/X, and handbrake-turn (hold X/A) for quick U-turns. Press Square/X in a car to slam the door into bikers.",
+    "sources": [
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/",
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "driving",
+      "controls",
+      "drive-by"
+    ]
+  },
+  {
+    "id": "tip-076",
+    "category": "weapons",
+    "question": "How do I keep weapons I find?",
+    "answer": "Picked-up guns aren't yours. Store them in any car trunk to keep them, but drop one or die with it and it's gone. Guns you buy at Ammu-Nation are permanent and moddable, and they go back to your trunk if dropped. Owned guns have blue names, unowned ones white.",
+    "sources": [
+      "https://www.polygon.com/gta-6-keep-stolen-vehicles-weapons-register/",
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "weapons",
+      "trunk",
+      "Ammu-Nation"
+    ]
+  },
+  {
+    "id": "tip-077",
+    "category": "weapons",
+    "question": "What are unique (gold) weapons?",
+    "answer": "Unique guns, shown with a gold icon, join your arsenal automatically when you pick them up. You'll find them in your trunk or a weapon locker at Ammu-Nation or a garage. They usually come from missions and can't be modified.",
+    "sources": [
+      "https://www.polygon.com/gta-6-keep-stolen-vehicles-weapons-register/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "unique weapons",
+      "weapon locker"
+    ]
+  },
+  {
+    "id": "tip-078",
+    "category": "weapons",
+    "question": "Where can I buy sniper rifles and rocket launchers?",
+    "answer": "At the 'Expanded' Ammu-Nations, of which there are six: Woodhatch, Big Shots, Phil's Ammu-Nation, Black Eagle, Iron & Oak and Prestige Firearms. There are 24 gun stores in total, and each one sells a unique weapon variant.",
+    "sources": [
+      "https://www.powerpyx.com/gta-6-all-ammu-nation-gun-stores-locations/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "Ammu-Nation",
+      "sniper",
+      "rocket launcher"
+    ]
+  },
+  {
+    "id": "tip-079",
+    "category": "weapons",
+    "question": "Which weapon attachments should I get first?",
+    "answer": "A sight and a suppressor. With a sight you can click the right stick for first-person aiming, and a suppressor keeps gunfire reports and cop responses down so you have more time to loot.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "attachments",
+      "suppressor",
+      "sight"
+    ]
+  },
+  {
+    "id": "tip-080",
+    "category": "weapons",
+    "question": "How do I get the Crabshack VF5 SMG?",
+    "answer": "At Pelican Valley Outpost, an island research site reached by boat from Jason's place, turn on the breaker, log into the computer with CLEAVES, open the safe with 0072, then use 0212 on the boathouse keypad. The SMG is inside.",
+    "sources": [
+      "https://www.polygon.com/gta-6-giant-crab-safe-code-crabshack-vf5-smg-how-to-get-pelican-valley-outpost/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "unique weapon",
+      "SMG",
+      "Pelican Valley"
+    ]
+  },
+  {
+    "id": "tip-081",
+    "category": "cheats",
+    "question": "When can I use cheats?",
+    "answer": "Only after you finish the main story. A Cheats tab then appears under Progress in the menu, and each cheat has its own challenge to unlock. Progress you made before the credits still counts.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheats",
+      "unlock"
+    ]
+  },
+  {
+    "id": "tip-082",
+    "category": "cheats",
+    "question": "How do I enter a cheat?",
+    "answer": "Press D-pad Up for the phone, hold L1+R1 (PS5) or LB+RB (Xbox), then type the code on the D-pad. Codes are the same on both consoles.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheats",
+      "controls"
+    ]
+  },
+  {
+    "id": "tip-083",
+    "category": "cheats",
+    "question": "Do cheats disable saving or trophies?",
+    "answer": "Yes. Using a cheat turns off saving and trophies/achievements for that session, so save first.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheats",
+      "trophies",
+      "save"
+    ]
+  },
+  {
+    "id": "tip-084",
+    "category": "cheats",
+    "question": "How many cheats are there?",
+    "answer": "61 in total, across five groups: Player, Combat, Spawn Vehicle, Environment and Screen Filters. Many codes haven't been found yet.",
+    "sources": [
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheats",
+      "list"
+    ]
+  },
+  {
+    "id": "tip-085",
+    "category": "cheats",
+    "question": "Are there phone-number cheats like GTA 5?",
+    "answer": "None have been found. Lists of 'GTA 6 cheat phone numbers' are just GTA 5 codes.",
+    "sources": [
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "cheats",
+      "phone numbers"
+    ]
+  },
+  {
+    "id": "tip-086",
+    "category": "cheats",
+    "question": "What's the $250,000 money cheat code in GTA 6?",
+    "answer": "Up, Right, Down, Left, Up, Left, Down, Right. Guides disagree on the unlock: finishing the story (GamesRadar, Red Bull) or making $250,000 from fenced goods (Polygon).",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "money"
+    ]
+  },
+  {
+    "id": "tip-087",
+    "category": "cheats",
+    "question": "What's the Drunk cheat code in GTA 6?",
+    "answer": "Up, Left, Right, Up, Up, Left, Right, Up, Left, Right. Unlocks after spending $2,500 on alcohol.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "player"
+    ]
+  },
+  {
+    "id": "tip-088",
+    "category": "cheats",
+    "question": "What's the Raise Heat Level cheat code in GTA 6?",
+    "answer": "Left, Down, Right, Down, Up, Down, Up. GamesRadar says it unlocks after losing a 3-star wanted level 25 times.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "player",
+      "heat"
+    ]
+  },
+  {
+    "id": "tip-089",
+    "category": "cheats",
+    "question": "What's the Unlimited Focus cheat code in GTA 6?",
+    "answer": "Down, Up, Up, Down, Up, Down, Up, Down, Up, Right. Unlocks by finishing the story.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "player",
+      "focus"
+    ]
+  },
+  {
+    "id": "tip-090",
+    "category": "cheats",
+    "question": "What's the Max Ammo cheat code in GTA 6?",
+    "answer": "Down, Up, Right, Down, Left, Left, Up, Up, Down, Left. Unlocks with 25 bronze-or-better shooting range medals.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "combat",
+      "ammo"
+    ]
+  },
+  {
+    "id": "tip-091",
+    "category": "cheats",
+    "question": "What's the Infinite Ammo cheat code in GTA 6?",
+    "answer": "Down, Up, Right, Down, Left, Left, Up, Down, Down, Down. Unlocks with 25 silver-or-better shooting range medals.",
+    "sources": [
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "combat",
+      "ammo"
+    ]
+  },
+  {
+    "id": "tip-092",
+    "category": "cheats",
+    "question": "What's the No Reload cheat code in GTA 6?",
+    "answer": "Down, Up, Right, Down, Left, Left, Up, Down, Down, Up. Unlocks with 25 gold shooting range medals.",
+    "sources": [
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "combat",
+      "ammo"
+    ]
+  },
+  {
+    "id": "tip-093",
+    "category": "cheats",
+    "question": "What's the Attack Force cheat code in GTA 6?",
+    "answer": "Down, Up, Left, Left, Right, Down, Down, Up, Down. Bullets and melee send targets flying. Unlocks by finishing the story.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "combat"
+    ]
+  },
+  {
+    "id": "tip-094",
+    "category": "cheats",
+    "question": "What's the Exploding Balls cheat code in GTA 6?",
+    "answer": "Down, Up, Left, Left, Right, Down, Down, Up, Right. Sports balls explode on impact.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "combat"
+    ]
+  },
+  {
+    "id": "tip-095",
+    "category": "cheats",
+    "question": "What's the Cycle Weather cheat code in GTA 6?",
+    "answer": "Down, Right, Up, Down, Right, Up, Right. Polygon and GamesRadar say it unlocks by revealing the whole map, and Red Bull says by finishing the story.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "environment",
+      "weather"
+    ]
+  },
+  {
+    "id": "tip-096",
+    "category": "cheats",
+    "question": "What's the MTL Pumper spawn cheat code in GTA 6?",
+    "answer": "Left, Up, Right, Down, Left, Right, Right, Up. Unlocks when you discover the MTL Pumper in the Progress menu.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "vehicle spawn"
+    ]
+  },
+  {
+    "id": "tip-097",
+    "category": "cheats",
+    "question": "What's the HVY Bulldozer spawn cheat code in GTA 6?",
+    "answer": "Left, Up, Right, Down, Left, Right, Right, Down. Unlocks when you discover the HVY Bulldozer in the Progress menu.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "vehicle spawn"
+    ]
+  },
+  {
+    "id": "tip-098",
+    "category": "cheats",
+    "question": "What's the Maibatsu Boomazoom spawn cheat code in GTA 6?",
+    "answer": "Left, Up, Right, Down, Left, Left, Up, Left. Unlocks with 5 shopping challenges.",
+    "sources": [
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "vehicle spawn"
+    ]
+  },
+  {
+    "id": "tip-099",
+    "category": "cheats",
+    "question": "What's the Cataclysm filter cheat code in GTA 6?",
+    "answer": "Down, Down, Up, Right, Right, Up, Left, Left, Right, Right. Unlocks when you discover Martha's Vamos in the Progress menu.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "screen filter"
+    ]
+  },
+  {
+    "id": "tip-100",
+    "category": "cheats",
+    "question": "What's the Dollhouse filter cheat code in GTA 6?",
+    "answer": "Down, Down, Up, Right, Right, Up, Left, Left, Down, Right. Unlocks after spending 8 hours with your partner.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheat code",
+      "screen filter"
+    ]
+  },
+  {
+    "id": "tip-101",
+    "category": "cheats",
+    "question": "What's the Body Armor cheat code in GTA 6?",
+    "answer": "Down, Up, Left, Up, Up, Up, Up, Up, Down, Down. Unlocks after 100 workouts. Only GamesRadar lists this code so far.",
+    "sources": [
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "cheat code",
+      "player",
+      "armor"
+    ]
+  },
+  {
+    "id": "tip-102",
+    "category": "cheats",
+    "question": "What's the Raise Wanted Level cheat code in GTA 6?",
+    "answer": "Left, Down, Right, Down, Up, Right, Up. Unlocks after losing a 3-star wanted level 50 times. Only GamesRadar lists this code so far.",
+    "sources": [
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "cheat code",
+      "player",
+      "wanted"
+    ]
+  },
+  {
+    "id": "tip-103",
+    "category": "cheats",
+    "question": "What's the Vehicle Force cheat code in GTA 6?",
+    "answer": "Down, Up, Left, Left, Right, Down, Left, Up, Down. Unlocks after killing 25 enemies with a vehicle. Only GamesRadar lists this code so far.",
+    "sources": [
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "cheat code",
+      "combat"
+    ]
+  },
+  {
+    "id": "tip-104",
+    "category": "cheats",
+    "question": "What's the Faded Glory filter cheat code in GTA 6?",
+    "answer": "Down, Down, Up, Right, Right, Up, Left, Left, Left, Right. Unlocks after robbing 50 stores with your partner. Only GamesRadar lists this code so far.",
+    "sources": [
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "cheat code",
+      "screen filter"
+    ]
+  },
+  {
+    "id": "tip-105",
+    "category": "cheats",
+    "question": "Which cheats need collectibles?",
+    "answer": "Move Time Forward needs 10 collectible watches and Pause Time of Day needs 20. Destroying 50 cocaine flamingos unlocks the Inflatable Flamingo spawn, and all 24 Vice City Flamingos cards unlock the Bubblegum filter. Codes for some of these aren't known yet.",
+    "sources": [
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/",
+      "https://www.gamesradar.com/games/grand-theft-auto/gta-6-cheats/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cheats",
+      "collectibles",
+      "watches",
+      "flamingos"
+    ]
+  },
+  {
+    "id": "tip-106",
+    "category": "collectibles",
+    "question": "How many luxury watches are there, and where?",
+    "answer": "There are 34, mostly as key valuables inside gang operations and marked with a gold icon. Collecting 10 unlocks the Move Time Forward cheat, and 20 unlocks Pause Time of Day.",
+    "sources": [
+      "https://gtapoint.com/gta-6-collectibles-guide/",
+      "https://leonipedia.com/guides/luxury-watches/",
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "watches",
+      "gang operations"
+    ]
+  },
+  {
+    "id": "tip-107",
+    "category": "collectibles",
+    "question": "How do I know what's left in a gang operation?",
+    "answer": "Hover over its yellow map icon to see how many key valuables remain. Track progress under Progress > Gangs. Cleared operations go grey and come back later.",
+    "sources": [
+      "https://www.powerpyx.com/gta-6-all-illegal-gang-operations-locations/",
+      "https://leonipedia.com/guides/luxury-watches/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "gang operations",
+      "100%"
+    ]
+  },
+  {
+    "id": "tip-108",
+    "category": "collectibles",
+    "question": "How do cocaine flamingos work?",
+    "answer": "Shoot the pink lawn flamingos to knock out a cocaine package you can fence. Only ones with a black-and-white beak count. Destroying 50 unlocks the Inflatable Flamingo spawn cheat.",
+    "sources": [
+      "https://gtapoint.com/gta-6-collectibles-guide/",
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "flamingos",
+      "cocaine"
+    ]
+  },
+  {
+    "id": "tip-109",
+    "category": "collectibles",
+    "question": "What are collectible cards?",
+    "answer": "Trading cards in themed sets, found in phone boxes, on toolboxes, shelves and corkboards. Completing the 24-card Vice City Flamingos set unlocks the Bubblegum filter cheat.",
+    "sources": [
+      "https://gtapoint.com/gta-6-collectibles-guide/",
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "cards",
+      "Vice City Flamingos"
+    ]
+  },
+  {
+    "id": "tip-110",
+    "category": "collectibles",
+    "question": "Is there anything missable in Chapter 1?",
+    "answer": "Yes. Meditating on Jason's balcony with Lucia is only available in Chapter 1 and is linked to a trophy. Some limited-time side content also disappears as the story moves on.",
+    "sources": [
+      "https://gtapoint.com/gta-6-collectibles-guide/",
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "missable",
+      "meditation",
+      "chapter 1"
+    ]
+  },
+  {
+    "id": "tip-111",
+    "category": "collectibles",
+    "question": "How do underwater discoveries work?",
+    "answer": "They're part of Kenton's treasure-diving questline out of Key Lento. Dive at the marked wrecks with a metal detector.",
+    "sources": [
+      "https://gtapoint.com/gta-6-collectibles-guide/",
+      "https://www.gamespot.com/articles/best-ways-to-make-money-fast-in-gta-6/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "underwater",
+      "Kenton",
+      "diving"
+    ]
+  },
+  {
+    "id": "tip-112",
+    "category": "collectibles",
+    "question": "Where do I track collectibles?",
+    "answer": "Pause, open the Map, go to the Progress tab and pick Collections.",
+    "sources": [
+      "https://gtapoint.com/gta-6-collectibles-guide/",
+      "https://www.polygon.com/gta-6-cheat-codes-list-unlock/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "progress",
+      "tracking"
+    ]
+  },
+  {
+    "id": "tip-113",
+    "category": "map_secrets_easter_eggs",
+    "question": "Is Bigfoot in GTA 6?",
+    "answer": "Yes. Players have met a Bigfoot/Skunk Ape in the woods, which ties into a side mission involving tree effigies. Touching a strange shrine knocks you out.",
+    "sources": [
+      "https://www.polygon.com/gta-6-easter-egg-bigfoot-sightings/",
+      "https://www.gamespot.com/articles/gta-6-easter-eggs-list-and-locations/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "Bigfoot",
+      "Skunk Ape",
+      "cryptid"
+    ]
+  },
+  {
+    "id": "tip-114",
+    "category": "map_secrets_easter_eggs",
+    "question": "Where's the giant crab?",
+    "answer": "At Pelican Valley Outpost, an abandoned crab research island north of Key Lento. Read the computer and a huge crab ('Karkinos') ambushes you, a nod to the 2006 'giant enemy crab' E3 meme. Just push her off.",
+    "sources": [
+      "https://www.polygon.com/gta-6-giant-crab-safe-code-crabshack-vf5-smg-how-to-get-pelican-valley-outpost/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "crab",
+      "Pelican Valley",
+      "meme"
+    ]
+  },
+  {
+    "id": "tip-115",
+    "category": "map_secrets_easter_eggs",
+    "question": "Is there a real Easter egg in GTA 6?",
+    "answer": "Yes. Players climbed to a nest at the top of one of Vice City's tallest towers (about a seven-minute climb), where you can take an egg and throw it.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-easter-eggs-list-and-locations/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "Easter egg",
+      "tower"
+    ]
+  },
+  {
+    "id": "tip-116",
+    "category": "map_secrets_easter_eggs",
+    "question": "Is Dexter's apartment in the game?",
+    "answer": "Yes, there's a Dexter Morgan-style apartment on Washington Island in Vice City. You can't go inside.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-easter-eggs-list-and-locations/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "Dexter",
+      "Washington Island"
+    ]
+  },
+  {
+    "id": "tip-117",
+    "category": "map_secrets_easter_eggs",
+    "question": "Are there Red Dead or Liberty City references?",
+    "answer": "Yes. One example is a Western novel about New Austin in Jacob's Tavern, Millport, and another is a Liberty City mob memoir on Jason's table in Chapter 1.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-easter-eggs-list-and-locations/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "Red Dead",
+      "Liberty City",
+      "references"
+    ]
+  },
+  {
+    "id": "tip-118",
+    "category": "map_secrets_easter_eggs",
+    "question": "Is there a secret radio station?",
+    "answer": "Yes. Scan the pink gas-mask poster in The Vault nightclub in Vice City with your phone's WAiNK camera (D-pad Up, then R1/RB) to unlock The Vault Radio.",
+    "sources": [
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "radio",
+      "The Vault",
+      "secret"
+    ]
+  },
+  {
+    "id": "tip-119",
+    "category": "map_secrets_easter_eggs",
+    "question": "What's the talking parrot secret?",
+    "answer": "Listen with Focus for birds in a store's back room. Talking to the parrot can lead you to a hidden cash stash.",
+    "sources": [
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "parrot",
+      "secret stash"
+    ]
+  },
+  {
+    "id": "tip-120",
+    "category": "missions_story",
+    "question": "How many chapters and missions are in GTA 6?",
+    "answer": "A prologue and five chapters: Just Like Paradise, Paradise Lost, Tits Ass Drug Money, Vice City Baby, and Top of the World Ma. There are 91 main missions.",
+    "sources": [
+      "https://www.gamespot.com/articles/how-long-to-beat-gta-6/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "chapters",
+      "missions"
+    ]
+  },
+  {
+    "id": "tip-121",
+    "category": "missions_story",
+    "question": "How long is GTA 6?",
+    "answer": "GameSpot puts the main story at 65+ hours, 90–100 hours with side content, and 200+ hours for 100%.",
+    "sources": [
+      "https://www.gamespot.com/articles/how-long-to-beat-gta-6/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "length",
+      "hours"
+    ]
+  },
+  {
+    "id": "tip-122",
+    "category": "missions_story",
+    "question": "Does GTA 6 have multiple endings?",
+    "answer": "Yes. Family Savings and Jason and Lucia's relationship both matter, and the best ending needs a maxed-out relationship plus the full $2M in savings. Whether the criminal profile also matters isn't confirmed yet.",
+    "sources": [
+      "https://www.gamespot.com/articles/does-gta-6-have-multiple-endings/",
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "endings",
+      "family savings",
+      "relationship"
+    ]
+  },
+  {
+    "id": "tip-123",
+    "category": "missions_story",
+    "question": "Can I go to Vice City early?",
+    "answer": "Yes. The story only takes you there in Chapter 3, but you're free to drive there earlier.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-easter-eggs-list-and-locations/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "Vice City",
+      "exploration"
+    ]
+  },
+  {
+    "id": "tip-124",
+    "category": "missions_story",
+    "question": "Can I miss side missions by advancing the story?",
+    "answer": "The major side missions can be done in any chapter, but some characters, events and timed activities come and go, so keep a save in each chapter.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "side missions",
+      "missable"
+    ]
+  },
+  {
+    "id": "tip-125",
+    "category": "missions_story",
+    "question": "How do I start hunting?",
+    "answer": "Play as Jason in Chapter 2 and meet his old army friend Bret in Lummox County. He hands out hunting jobs and buys what you kill.",
+    "sources": [
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "hunting",
+      "Bret"
+    ]
+  },
+  {
+    "id": "tip-126",
+    "category": "characters_controls_settings",
+    "question": "What platforms is GTA 6 on?",
+    "answer": "PS5 and Xbox Series X|S, out since 19 November 2026.",
+    "sources": [
+      "https://www.rockstargames.com/VI/out-now",
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "platforms",
+      "release date"
+    ]
+  },
+  {
+    "id": "tip-127",
+    "category": "characters_controls_settings",
+    "question": "Is GTA 6 on PC?",
+    "answer": "Rockstar hasn't announced a PC version. Talk of a 2027 port is only a rumour.",
+    "sources": [
+      "https://www.polygon.com/gta-6-30-fps-locked-ps5-pro-performance/",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "PC",
+      "platforms"
+    ]
+  },
+  {
+    "id": "tip-128",
+    "category": "characters_controls_settings",
+    "question": "Is there a 60fps or performance mode?",
+    "answer": "No. It runs at 30fps on every console, including PS5 Pro, and Rockstar says the Pro's CPU can't run the simulation faster. The Pro adds ray-traced shadows and PSSR instead.",
+    "sources": [
+      "https://www.polygon.com/gta-6-30-fps-locked-ps5-pro-performance/",
+      "https://www.pushsquare.com/news/2026/11/ps5-pro-is-not-powerful-enough-to-run-gta-6-at-60fps-rockstar-explains-frame-rate-decision"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "fps",
+      "performance",
+      "PS5 Pro"
+    ]
+  },
+  {
+    "id": "tip-129",
+    "category": "characters_controls_settings",
+    "question": "How do relationship levels work?",
+    "answer": "There are four levels: Running on Empty, Partners in Crime, Crazy in Love and Hot Together. Check yours at the bottom of the Jason and Lucia menu.",
+    "sources": [
+      "https://www.polygon.com/gta-6-romance-guide-how-to-improve-relationship-level-grand-theft-auto/",
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-romance-jason-lucia/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "relationship",
+      "romance"
+    ]
+  },
+  {
+    "id": "tip-130",
+    "category": "characters_controls_settings",
+    "question": "How do I improve Jason and Lucia's relationship?",
+    "answer": "Do missions and activities together, hold hands, greet each other, hug or kiss, buy each other food and drinks, reply to texts, and go to bed at the same time. A pink heart pops up whenever it helps.",
+    "sources": [
+      "https://www.polygon.com/gta-6-romance-guide-how-to-improve-relationship-level-grand-theft-auto/",
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-romance-jason-lucia/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "relationship",
+      "romance"
+    ]
+  },
+  {
+    "id": "tip-131",
+    "category": "characters_controls_settings",
+    "question": "What hurts the relationship?",
+    "answer": "Ignoring your partner's texts and calls, turning down hangouts, standing them up, failing joint missions, and hitting them with your car.",
+    "sources": [
+      "https://www.polygon.com/gta-6-romance-guide-how-to-improve-relationship-level-grand-theft-auto/",
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-romance-jason-lucia/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "relationship"
+    ]
+  },
+  {
+    "id": "tip-132",
+    "category": "characters_controls_settings",
+    "question": "Do I need to play as both characters?",
+    "answer": "For the best relationship, yes: according to Rockstar, both Jason and Lucia need to treat each other well, so switch between them regularly.",
+    "sources": [
+      "https://www.pcgamer.com/games/grand-theft-auto/gta-6-romance-jason-lucia/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "relationship",
+      "switching"
+    ]
+  },
+  {
+    "id": "tip-133",
+    "category": "characters_controls_settings",
+    "question": "How do I start with a better relationship?",
+    "answer": "In Chapter 1, have Jason fix up the house, buy flowers and collect Lucia's clothes, then pick her up from prison on time. You'll start at 'Crazy in Love' instead of 'Partners in Crime'.",
+    "sources": [
+      "https://www.polygon.com/gta-6-romance-guide-how-to-improve-relationship-level-grand-theft-auto/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "relationship",
+      "chapter 1"
+    ]
+  },
+  {
+    "id": "tip-134",
+    "category": "characters_controls_settings",
+    "question": "Can I make Jason and Lucia walk faster?",
+    "answer": "Yes. In the options, set fast walk as the default walking speed. The same menu has full button remapping.",
+    "sources": [
+      "https://www.theguardian.com/games/2026/nov/19/tips-for-playing-grand-theft-auto-vi"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "settings",
+      "walk speed",
+      "controls"
+    ]
+  },
+  {
+    "id": "tip-135",
+    "category": "characters_controls_settings",
+    "question": "Is there an easy mode?",
+    "answer": "There's no difficulty setting, but Settings > Gameplay (at the bottom) has Accessible Combat (you take less damage and deal more) and Reduced Vehicle Damage. Neither affects trophies.",
+    "sources": [
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "settings",
+      "difficulty",
+      "accessibility"
+    ]
+  },
+  {
+    "id": "tip-136",
+    "category": "characters_controls_settings",
+    "question": "How do I auto-equip a helmet on bikes?",
+    "answer": "Helmets come with every bike and scooter but aren't worn by default. Equip one from the loadout, or turn on 'auto equip helmet' in Settings > Gameplay. Helmets cut crash damage a lot.",
+    "sources": [
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "settings",
+      "helmet",
+      "bikes"
+    ]
+  },
+  {
+    "id": "tip-137",
+    "category": "characters_controls_settings",
+    "question": "Can I listen to the radio while walking?",
+    "answer": "Yes. Buy headphones at an electronics store (headphone icon on the map). Hold Left on the D-pad to change stations.",
+    "sources": [
+      "https://www.polygon.com/gta-6-grand-theft-auto-beginners-tips-tricks/"
+    ],
+    "confidence": "single-source",
+    "tags": [
+      "radio",
+      "headphones"
+    ]
+  },
+  {
+    "id": "tip-138",
+    "category": "characters_controls_settings",
+    "question": "How do I use the phone and WAiNK?",
+    "answer": "Press D-pad Up for the phone. Point WAiNK at cars to see their value and security, and press R1/RB to scan things like art or posters.",
+    "sources": [
+      "https://www.gamespot.com/articles/gta-6-tips-everything-i-wish-i-knew-before-i-started-playing/",
+      "https://gtapoint.com/gta-6-collectibles-guide/",
+      "https://movieweb.com/gta-6-helpful-tips/"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "phone",
+      "WAiNK",
+      "controls"
+    ]
+  },
+  {
+    "id": "tip-139",
+    "category": "online",
+    "question": "Is there GTA 6 Online?",
+    "answer": "Not yet. GTA 6 launched as single-player only and Rockstar hasn't announced a date for an online mode. Talk of 2027 is speculation.",
+    "sources": [
+      "https://www.independent.co.uk/bulletin/lifestyle/gta-6-online-when-come-out-release-b3087692.html",
+      "https://www.redbull.com/us-en/gta-6-cheat-codes"
+    ],
+    "confidence": "confirmed",
+    "tags": [
+      "online",
+      "multiplayer"
+    ]
+  }
+]

@@ -30,6 +30,7 @@
       <p class="players">Players helping players.</p>
 
       <button class="new-chat" id="newChat" type="button">+ New session</button>
+      <a class="playbook-link" href="#guide">Field guide</a>
       <a class="playbook-link" href="/playbook">Community playbook</a>
       <p class="tip-count" id="tipCount">0 tips shared</p>
       <ol class="contributors" id="contributors"></ol>
@@ -53,6 +54,24 @@
         </a>
       </header>
 
+      <section class="guide" id="guide" hidden>
+        <div class="guide-head">
+          <h1>Field <span>guide</span></h1>
+          <p>Players helping players. Built with <a href="https://betterproxy.ai" target="_blank" rel="noopener noreferrer">BetterProxy</a>.</p>
+          <a class="bp-badge" href="https://betterproxy.ai" target="_blank" rel="noopener noreferrer">
+            <span class="bp-bolt" aria-hidden="true">⚡</span>
+            <span>Powered by <strong>BetterProxy</strong></span>
+          </a>
+        </div>
+        <form class="search" id="guideSearchForm">
+          <input id="guideSearch" type="search" placeholder="Search questions, answers, tags" aria-label="Search the guide" />
+        </form>
+        <div class="chips" id="guideChips"></div>
+        <p class="guide-add" id="guideAdd" hidden></p>
+        <div id="guideAddForm" hidden></div>
+        <div class="cards" id="guideCards"></div>
+      </section>
+
       <section class="chat" id="chat" aria-live="polite">
         <div class="hero" id="hero">
           <div class="sun" aria-hidden="true"></div>
@@ -65,7 +84,9 @@
       </section>
 
       <div class="community-bar">
-        <a href="/playbook">Community playbook</a>
+        <a href="#chat" data-tab="chat">Chat</a>
+        <a href="#guide" data-tab="guide">Guide</a>
+        <a href="/playbook">Playbook</a>
         <span id="tipCountBar">0 tips shared</span>
       </div>
 

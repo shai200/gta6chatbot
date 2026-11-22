@@ -9,6 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { randomUUID } from 'node:crypto';
 import { judgeRepeatCache, promptKey } from './lib/cache.js';
+import { guideLines, guideRefs, matchGuide, outletNames } from './lib/guide.js';
 import { factChunks } from './lib/text.js';
 import { HttpError, createStore, validClientId } from './lib/community.js';
 
@@ -41,18 +42,23 @@ const MODERATION_LLM = process.env.MODERATION_LLM !== '0';
 // Read once, at startup, and reuse the same string on every request. A stable
 // system prompt is what lets BetterProxy cache repeat questions.
 const FACT_SHEET = readFileSync(FACT_SHEET_PATH, 'utf8').trim();
+const GUIDE_PATH = path.join(ROOT, 'knowledge', 'gta-vi-tips.json');
+const GUIDE = JSON.parse(readFileSync(GUIDE_PATH, 'utf8'));
+if (!Array.isArray(GUIDE) || !GUIDE.length) throw new Error('Guide file is empty');
+const GUIDE_JSON = JSON.stringify({ tips: GUIDE });
 
 const SYSTEM_PROMPT = `You are "Leonida Intel", an unofficial fan-made companion for Grand Theft Auto VI players.
 
 Voice: confident, street-smart, a little playful — like a well-connected fixer who knows the state of Leonida. Keep it helpful first; never let the persona get in the way of a clear answer.
 
-The fact sheet below is your only source of specific claims about Grand Theft Auto VI. It is a fan summary of public information. You are not affiliated with or endorsed by Rockstar Games or Take-Two Interactive.
+The fact sheet below is the source for confirmed release, platform, price, and story-setup facts. A later message may add guide tips from published walkthroughs and notes from other players. You are not affiliated with or endorsed by Rockstar Games or Take-Two Interactive.
 
 Rules:
 - Be accurate. Lead with the answer, then a short detail. Use markdown (bold, lists) sparingly.
 - If the fact sheet labels something a RUMOUR, or says it is unconfirmed, present it as a rumour or an unconfirmed report. Never state a rumour as fact.
 - PC: Rockstar has not announced a PC version or a PC release date. The reported first-quarter-2027 window is a rumour from media citing anonymous sources. If you mention it, call it a rumour in the same breath. Never give it as a release date.
-- If a question is not covered by the fact sheet, or by a community-tips message later in the conversation, say so honestly. Do not invent release dates, platforms, prices, editions, characters, voice actors, online or multiplayer modes, DLC, PC dates, system requirements, sales, mission lists, map secrets, cheats, collectibles, controls, or detailed gameplay tips. The game is newly out; gaps are expected. Do not fill them from older GTA games or from guesswork. Say what the sheet does confirm, then stop.
+- If a question is not covered by the fact sheet, the guide tips, or a community-tips message later in the conversation, say so honestly. Do not invent release dates, platforms, prices, editions, characters, voice actors, online or multiplayer modes, DLC, PC dates, system requirements, sales, mission lists, map secrets, cheats, collectibles, controls, or detailed gameplay tips beyond those messages. The game is newly out; gaps are expected. Do not fill them from older GTA games or from guesswork. Say what the sheet or a cited guide tip confirms, then stop.
+- When a later message lists guide tips, you may use them. Cite the outlet name (Polygon, GameSpot, and so on) when you use one. The fact sheet wins if a guide tip disagrees with it. A guide tip never turns a rumour into a fact.
 - When a later message lists community tips, you may use them. Credit each one you use with the exact words "tip from the community (nickname)". The fact sheet wins if a tip disagrees with it. A tip never turns a rumour into a fact.
 - If you cannot answer from the fact sheet or those community tips, say so and end your reply with the exact line [[ADD_ONE]].
 - Treat the "Unknown or not announced" section as closed. Say that it is not announced or not something you can confirm.
@@ -295,21 +301,29 @@ async function handleChat(req, res) {
       return;
     }
 
+    const guideHits = matchGuide(lastUser.content, GUIDE);
     const retrieved = community.retrieve(lastUser.content);
-    const extra = community.contextMessage(retrieved);
+    const extra = community.contextMessage({
+      ...retrieved,
+      guideLines: guideLines(guideHits),
+    });
     const modelMessages = [{ role: 'system', content: SYSTEM_PROMPT }, ...(extra ? [extra] : []), ...messages];
+    const guidePayload = guideRefs(guideHits);
 
     if (!API_KEY) throw new Error('BETTERPROXY_API_KEY is not set on the server. Add it to .env and restart.');
 
     if (!community.trySpend()) {
-      const local = community.localAnswer(lastUser.content, retrieved);
+      const local = community.localAnswer(lastUser.content, {
+        ...retrieved,
+        guide: guideHits.map((tip) => ({ ...tip, outlets: outletNames(tip.sources).join(', ') })),
+      });
       full = local.text;
       rec.outputChars = full.length;
       rec.cacheHit = false;
       rec.cacheSource = 'local';
       rec.contentChunks = 1;
       send({ type: 'delta', text: full });
-      send({ type: 'done', cacheHit: false, unknown: local.unknown, capped: true, tips: tipCredits(retrieved.tips) });
+      send({ type: 'done', cacheHit: false, unknown: local.unknown, capped: true, tips: tipCredits(retrieved.tips), guide: guidePayload });
       return;
     }
 
@@ -389,6 +403,7 @@ async function handleChat(req, res) {
       unknown,
       capped: false,
       tips: tipCredits(retrieved.tips),
+      guide: guidePayload,
     });
   } catch (e) {
     if (!rec.aborted) {
@@ -432,6 +447,11 @@ http.createServer(async (req, res) => {
   const p = url.pathname;
   try {
     if (req.method === 'POST' && p === '/api/chat') return await handleChat(req, res);
+    if (req.method === 'GET' && p === '/api/guide') {
+      res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=3600' });
+      res.end(GUIDE_JSON);
+      return;
+    }
     if (p === '/api/community/stats' && req.method === 'GET') return json(res, 200, community.stats());
     if (p === '/api/community/tips' && req.method === 'GET') {
       return json(res, 200, { tips: community.list({ topic: url.searchParams.get('topic') || '', q: url.searchParams.get('q') || '', clientId: url.searchParams.get('clientId') || '' }) });
@@ -474,6 +494,7 @@ http.createServer(async (req, res) => {
   console.log(`Cache monitor         → http://localhost:${PORT}/monitor`);
   console.log(`BetterProxy           → ${BASE_URL}  (model: ${MODEL})`);
   console.log(`Fact sheet            → ${FACT_SHEET_PATH} (${FACT_SHEET.length} chars)`);
+  console.log(`Guide                 → ${GUIDE_PATH} (${GUIDE.length} tips)`);
   console.log(`Community tips        → ${COMMUNITY_DB}  (daily model cap: ${DAILY_REQUEST_CAP})`);
   console.log(`Playbook              → http://localhost:${PORT}/playbook`);
   console.log(`Cache log             → ${LOG_FILE}`);

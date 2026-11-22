@@ -50,6 +50,12 @@ Trusted tips that match a question are added in a separate message, after the st
 
 The playbook is at `/playbook`, sorted by votes, with search and topic filters.
 
+## Field guide
+
+`knowledge/gta-vi-tips.json` is a fixed set of published tips (question, answer, sources, confidence). The Guide view is at `/#guide` and `/#guide/money`. `GET /api/guide` returns that file with a one-hour cache header.
+
+Before each model call, the closest guide tips (keyword score, at most five) are added in the same separate message as community tips. The system prompt itself stays the same on every request. When the daily cap is spent, that fallback answer includes those guide tips too. A chat that used them shows "Related in Guide" links.
+
 ## Railway
 
 Deploy the repo the way it already deploys. No new service, database plugin, or env var is required, and none of this asks for a credit card.

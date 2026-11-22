@@ -121,8 +121,10 @@ test('fact sheet is sent unchanged, and cache hits are header or a fast repeat',
   assert.equal(repeat.events[1].cacheHit, true);
   assert.equal(statusOnly.events[1].cacheHit, true);
   const pcReq = seen.find((body) => body.messages.some((m) => m.content === 'Is GTA 6 on PC?'));
-  assert.equal(pcReq.messages.length, 2);
-  assert.equal(pcReq.messages[1].content, 'Is GTA 6 on PC?');
+  assert.equal(pcReq.messages[0].content, seen[0].messages[0].content);
+  assert.equal(pcReq.messages.at(-1).content, 'Is GTA 6 on PC?');
+  assert.match(pcReq.messages[1].content, /tip-127/);
+  assert.match(pcReq.messages[1].content, /Polygon/);
   assert.equal(pc.events.at(-1).unknown, false);
   assert.equal(pc.events.at(-1).cacheHit, false);
   assert.equal(pc.events.some((e) => e.text?.includes('[[ADD_ONE]]')), false);

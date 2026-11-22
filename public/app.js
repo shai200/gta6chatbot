@@ -1,3 +1,5 @@
+import { mountGuide } from './guide.js';
+
 const $ = (id) => document.getElementById(id);
 const chat = $('chat'), thread = $('thread'), hero = $('hero'), input = $('input');
 const sendBtn = $('send'), side = $('side'), scrim = $('scrim'), statusEl = document.querySelector('.status');
@@ -108,7 +110,7 @@ async function ask(text) {
   controller = new AbortController();
   setStreaming(true);
   let answer = '', failed = null, pending = false, fromCache = false, friendly = false;
-  let replyUnknown = false, replyTips = [];
+  let replyUnknown = false, replyTips = [], replyGuide = [];
   let settled = false;
   const paint = () => {
     pending = false;
@@ -149,6 +151,7 @@ async function ask(text) {
           fromCache = evt.cacheHit === true;
           replyUnknown = evt.unknown === true;
           replyTips = Array.isArray(evt.tips) ? evt.tips : [];
+          replyGuide = Array.isArray(evt.guide) ? evt.guide : [];
         } else if (evt.type === 'error') {
           failed = evt.message;
           friendly = evt.friendly === true;
@@ -178,6 +181,12 @@ async function ask(text) {
       credit.className = 'tip-credits';
       credit.innerHTML = replyTips.map((tip) => `<span>tip from the community (${esc(tip.nickname || 'a player')})</span>`).join('');
       bubble.append(credit);
+    }
+    if (replyGuide.length) {
+      const related = document.createElement('div');
+      related.className = 'related';
+      related.innerHTML = `<span>Related in Guide</span>${replyGuide.map((tip) => `<a href="#guide/${encodeURIComponent(tip.category)}/${encodeURIComponent(tip.id)}">${esc(tip.question)}</a>`).join('')}`;
+      bubble.append(related);
     }
     history.push({ role: 'assistant', content: textOut });
     const follow = document.createElement('div');
@@ -265,7 +274,7 @@ function stripMarker(s) {
   return String(s || '').replace(/\[\[ADD_ONE\]\]/g, '').replace(/\n{3,}/g, '\n\n').trim();
 }
 
-function tipForm(question, mode) {
+function tipForm(question, mode, topicOverride) {
   const box = document.createElement('form');
   box.className = 'tip-form';
   box.innerHTML = `
@@ -279,7 +288,8 @@ function tipForm(question, mode) {
     <label class="check"><input type="checkbox" name="spoiler"> This has spoilers</label>
     <button type="submit">Add this tip</button>
     <p class="tip-form-error" hidden></p>`;
-  box.elements.topic.value = guessTopic(question);
+  const topics = TOPIC_OPTIONS.map(([id]) => id);
+  box.elements.topic.value = topics.includes(topicOverride) ? topicOverride : guessTopic(question);
   box.addEventListener('submit', async (e) => {
     e.preventDefault();
     const err = box.querySelector('.tip-form-error');
@@ -349,3 +359,29 @@ async function refreshStats() {
 refreshStats();
 setInterval(refreshStats, 30000);
 refreshSend();
+
+const guideView = mountGuide({
+  onAdd({ topic, label, host }) {
+    host.innerHTML = '';
+    host.append(tipForm(`What else should players know about ${label}?`, 'suggest', topic));
+  },
+});
+guideView.load().catch(() => {});
+
+function showView(name) {
+  const guideOn = name === 'guide';
+  document.getElementById('guide').hidden = !guideOn;
+  document.getElementById('chat').hidden = guideOn;
+  document.getElementById('composer').hidden = guideOn;
+  for (const tab of document.querySelectorAll('[data-tab]')) {
+    tab.classList.toggle('on', tab.dataset.tab === (guideOn ? 'guide' : 'chat'));
+  }
+  if (guideOn) guideView.showFromHash();
+}
+
+function syncHash() {
+  if (location.hash.startsWith('#guide')) showView('guide');
+  else showView('chat');
+}
+window.addEventListener('hashchange', syncHash);
+syncHash();
