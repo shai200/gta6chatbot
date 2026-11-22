@@ -3,17 +3,17 @@ const chat = $('chat'), thread = $('thread'), hero = $('hero'), input = $('input
 const sendBtn = $('send'), side = $('side'), scrim = $('scrim'), statusEl = document.querySelector('.status');
 
 const STARTERS = [
-  ['Getting started', 'What should I do in my first few hours in Leonida?'],
-  ['The map', 'Break down the regions of Leonida and what each is known for.'],
-  ['Money', 'What are solid ways to make money early on?'],
-  ['Heat', 'How does the wanted system work and how do I lose the cops?'],
+  ['Release', 'When did GTA VI come out, and which consoles is it on?'],
+  ['Story', 'Who are Jason and Lucia? Keep it spoiler-free.'],
+  ['Editions', 'What is the difference between the Standard and Ultimate editions?'],
+  ['PC & online', 'Is there a PC version, and is there a multiplayer mode?'],
 ];
 const TOPICS = {
-  'Story': ['Who are Jason and Lucia?', 'Give me a spoiler-free overview of the story setup.', 'How do I switch between characters?'],
-  'World': ['What is there to do in Vice City?', 'Tell me about the Leonida Keys.', 'What is Grassrivers like?', 'Best places to explore off the beaten path?'],
-  'Rides & gear': ['What kinds of vehicles can I drive?', 'How do I store and customize a car?', 'Tips for better driving and shooting?'],
-  'Hustle': ['Fastest ways to earn cash?', 'How do heists work?', 'What should I spend my first money on?'],
-  'Setup': ['Best settings for PS5?', 'Best settings for Xbox Series X|S?'],
+  'Release': ['When did GTA VI release?', 'Is it on PS4 or Xbox One?', 'Is there a PC version?', 'Can I play it through Xbox Game Pass?'],
+  'Story': ['Who are Jason and Lucia?', 'Give me a spoiler-free overview of the story setup.', 'Do I need to have played the earlier GTA games?'],
+  'Editions': ['How much does GTA VI cost in the US?', 'What is in the Ultimate Edition?', 'What did pre-orders include?'],
+  'On the console': ['What frame rate does it run at?', 'Which console runs it best?', 'How much storage should I reserve?'],
+  'Music': ['Who did the score?', 'What radio stations are in the game?'],
 };
 
 let history = [];       // {role, content}
@@ -107,7 +107,7 @@ async function ask(text) {
 
   controller = new AbortController();
   setStreaming(true);
-  let answer = '', failed = null, pending = false;
+  let answer = '', failed = null, pending = false, fromCache = false;
   let settled = false;
   const paint = () => {
     pending = false;
@@ -144,7 +144,8 @@ async function ask(text) {
         if (evt.type === 'delta') {
           answer += evt.text;
           if (!pending) { pending = true; requestAnimationFrame(paint); }
-        } else if (evt.type === 'error') failed = evt.message;
+        } else if (evt.type === 'done') fromCache = evt.cacheHit === true;
+        else if (evt.type === 'error') failed = evt.message;
       }
     }
   } catch (e) {
@@ -155,6 +156,13 @@ async function ask(text) {
   bubble.classList.remove('cursor');
   if (answer) {
     bubble.innerHTML = markdown(answer);
+    if (fromCache) {
+      const tag = document.createElement('div');
+      tag.className = 'instant';
+      tag.title = 'Served from the BetterProxy cache';
+      tag.innerHTML = '<span aria-hidden="true">⚡</span> instant';
+      bubble.append(tag);
+    }
     history.push({ role: 'assistant', content: answer });
   } else {
     bubble.parentElement.remove();

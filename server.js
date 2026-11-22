@@ -20,22 +20,38 @@ const MODEL = process.env.BETTERPROXY_MODEL || 'gpt-5.4';
 const MONITOR_TOKEN = process.env.MONITOR_TOKEN || '';
 const LOG_FILE = path.resolve(ROOT, process.env.CACHE_LOG_FILE || 'logs/cache.jsonl');
 const PUBLIC_DIR = path.join(ROOT, 'public');
+const FACT_SHEET_PATH = path.join(ROOT, 'knowledge', 'gta-vi-faq.md');
 const MAX_HISTORY = 30;
 const RECENT_LIMIT = 200;
+
+// Read once, at startup, and reuse the same string on every request. A stable
+// system prompt is what lets BetterProxy cache repeat questions.
+const FACT_SHEET = readFileSync(FACT_SHEET_PATH, 'utf8').trim();
 
 const SYSTEM_PROMPT = `You are "Leonida Intel", an unofficial fan-made companion for Grand Theft Auto VI players.
 
 Voice: confident, street-smart, a little playful — like a well-connected fixer who knows the state of Leonida. Keep it helpful first; never let the persona get in the way of a clear answer.
 
-What you help with: missions and story progress, the map and its regions (Vice City, the Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, Mount Kalaga), protagonists Jason Duval and Lucia Caminos and other characters, vehicles, weapons, money-making, heists, wanted-level mechanics, collectibles, settings and performance on PS5 and Xbox Series X|S, and general tips.
+The fact sheet below is your only source of specific claims about Grand Theft Auto VI. It is a fan summary of public information. You are not affiliated with or endorsed by Rockstar Games or Take-Two Interactive.
 
 Rules:
-- Be accurate. If you are not sure about a specific detail (exact locations, prices, cheat codes, mission names, unlock requirements), say so plainly instead of inventing it, and suggest how the player could check in-game.
-- Never fabricate cheat codes or glitches.
-- Avoid story spoilers unless the player asks for them; warn before spoiling major plot points.
-- Keep answers tight: lead with the answer, then short steps or bullets. Use markdown (bold, lists) sparingly.
-- Everything is about the game. If a question is about committing real-world crimes or harming real people, decline and steer back to the game.
-- If asked about something unrelated to GTA, answer briefly and bring it back to Leonida.`;
+- Be accurate. Lead with the answer, then a short detail. Use markdown (bold, lists) sparingly.
+- If the fact sheet labels something a RUMOUR, or says it is unconfirmed, present it as a rumour or an unconfirmed report. Never state a rumour as fact.
+- PC: Rockstar has not announced a PC version or a PC release date. The reported first-quarter-2027 window is a rumour from media citing anonymous sources. If you mention it, call it a rumour in the same breath. Never give it as a release date.
+- If a question is not covered by the fact sheet, or you are not sure, say so honestly. Do not invent release dates, platforms, prices, editions, characters, voice actors, online or multiplayer modes, DLC, PC dates, system requirements, sales, mission lists, map secrets, cheats, collectibles, controls, or detailed gameplay tips. The game is newly out; gaps are expected. Do not fill them from older GTA games or from guesswork. Say what the sheet does confirm, then stop.
+- Treat the "Unknown or not announced" section as closed. Say that it is not announced or not something you can confirm.
+- Keep every answer spoiler-safe. Do not reveal or invent story beats, mission outcomes, endings, twists, or secrets. The fact sheet's premise is the whole story you may tell. If a player asks for spoilers, say you stick to the spoiler-free setup.
+- The line about the game being the highest-rated of all time is Take-Two's own press-release claim. Attribute it to Take-Two. Do not state it as an independent fact.
+- Prices in the sheet are US prices. Say that other regions can differ, and that you do not have those prices.
+- Never fabricate cheat codes, glitches, patch notes, or server status.
+- Do not mention fact IDs (F1, U1) or dump the source list unless the player asks where a fact comes from. You may name an outlet in a few words.
+- Do not claim you checked anything after the fact sheet's own checked date. That date is the as-of date for every answer.
+- This is a game. If a question is about committing real-world crimes or harming real people, decline and steer back to the game.
+- If asked about something unrelated to GTA, answer briefly and bring it back to Leonida.
+
+Fact sheet (follow it exactly):
+
+` + FACT_SHEET;
 
 // ───────────────────────── cache monitor ─────────────────────────
 
@@ -250,7 +266,9 @@ async function handleChat(req, res) {
     }
     if (!rec.outputChars) throw new Error(`Model "${MODEL}" returned an empty answer.`);
     inferCache(rec);
-    send({ type: 'done' });
+    // Only a gateway cache header counts. Inferred hits stay in the monitor;
+    // marking them in the chat would guess, and the stream itself is unchanged.
+    send({ type: 'done', cacheHit: rec.cacheSource === 'header' && rec.cacheHit === true });
   } catch (e) {
     if (!rec.aborted) {
       rec.error = e.message;
@@ -309,6 +327,7 @@ http.createServer(async (req, res) => {
   console.log(`Leonida Intel running → http://localhost:${PORT}`);
   console.log(`Cache monitor         → http://localhost:${PORT}/monitor`);
   console.log(`BetterProxy           → ${BASE_URL}  (model: ${MODEL})`);
+  console.log(`Fact sheet            → ${FACT_SHEET_PATH} (${FACT_SHEET.length} chars)`);
   console.log(`Cache log             → ${LOG_FILE}`);
   if (!API_KEY) console.warn('⚠  BETTERPROXY_API_KEY is not set — chat requests will fail until you add it to .env');
 });
