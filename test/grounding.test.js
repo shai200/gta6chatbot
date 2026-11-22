@@ -40,16 +40,19 @@ async function chat(port, content) {
   return { status: res.status, events };
 }
 
-test('fact sheet is sent unchanged, and only a cache header marks a hit', async () => {
+test('fact sheet is sent unchanged, and cache hits are header or a fast repeat', async () => {
   const seen = [];
   mock = http.createServer(async (req, res) => {
     const chunks = [];
     for await (const chunk of req) chunks.push(chunk);
-    seen.push(JSON.parse(Buffer.concat(chunks).toString('utf8')));
+    const body = JSON.parse(Buffer.concat(chunks).toString('utf8'));
+    seen.push(body);
+    const user = [...body.messages].reverse().find((m) => m.role === 'user')?.content || '';
     const n = seen.length;
     let reply;
-    if (n === 1) reply = sse('Out 19 November 2026 on PS5 and Xbox Series X|S.', { 'X-Cache-Hit': 'true', 'X-Cache-Status': 'HIT' });
-    else if (n === 2) reply = sse('Same answer, but this one was not served from cache.');
+    if (user === 'Is GTA 6 on PC?') reply = sse('Not officially. Rockstar has not announced a PC version. A first-quarter 2027 window is a rumour.');
+    else if (n === 1) reply = sse('Out 19 November 2026 on PS5 and Xbox Series X|S.', { 'X-Cache-Hit': 'true', 'X-Cache-Status': 'HIT' });
+    else if (n === 2) reply = sse('Out 19 November 2026 on PS5 and Xbox Series X|S.');
     else reply = sse('Header status only.', { 'X-Cache-Status': 'HIT' });
     res.writeHead(reply.status, reply.headers);
     res.end(reply.body);
@@ -89,10 +92,11 @@ test('fact sheet is sent unchanged, and only a cache header marks a hit', async 
   assert.match(logs, /knowledge\/gta-vi-faq\.md/);
 
   const hit = await chat(appPort, 'When did GTA VI come out?');
-  const miss = await chat(appPort, 'When did GTA VI come out?');
+  const repeat = await chat(appPort, 'When did GTA VI come out?');
   const statusOnly = await chat(appPort, 'Is the PC date confirmed?');
+  const pc = await chat(appPort, 'Is GTA 6 on PC?');
 
-  assert.equal(seen.length, 3);
+  assert.equal(seen.length, 4);
   for (const body of seen) {
     assert.equal(body.model, 'gpt-5.4');
     assert.equal(body.stream, true);
@@ -113,8 +117,15 @@ test('fact sheet is sent unchanged, and only a cache header marks a hit', async 
 
   assert.deepEqual(hit.events.map((e) => e.type), ['delta', 'done']);
   assert.equal(hit.events[1].cacheHit, true);
-  assert.equal(miss.events[1].cacheHit, false);
+  assert.equal(hit.events[1].unknown, false);
+  assert.equal(repeat.events[1].cacheHit, true);
   assert.equal(statusOnly.events[1].cacheHit, true);
+  const pcReq = seen.find((body) => body.messages.some((m) => m.content === 'Is GTA 6 on PC?'));
+  assert.equal(pcReq.messages.length, 2);
+  assert.equal(pcReq.messages[1].content, 'Is GTA 6 on PC?');
+  assert.equal(pc.events.at(-1).unknown, false);
+  assert.equal(pc.events.at(-1).cacheHit, false);
+  assert.equal(pc.events.some((e) => e.text?.includes('[[ADD_ONE]]')), false);
 
   const html = await (await fetch(`http://127.0.0.1:${appPort}/`)).text();
   assert.match(html, /https:\/\/betterproxy\.ai/g);
