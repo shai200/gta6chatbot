@@ -79,14 +79,15 @@ For every chat request the server reads BetterProxy's response headers (`X-Cache
 - appended to `logs/cache.jsonl` (one JSON object per line; counters are rebuilt from it on restart),
 - aggregated at `GET /api/cache/stats` (hit rate, hit vs. miss latency, tokens charged, credits left) and shown live at `/monitor`.
 
-BetterProxy currently leaves those headers off **streaming** responses. When they are missing, the server infers hit or miss from the stream itself — a cached answer is replayed as a single chunk, a live one arrives token by token — and marks the record `"cacheSource": "inferred"` (shown as `HIT ~` / `MISS ~`). Tokens charged and credits remaining are only available when the headers are present.
+BetterProxy currently leaves those headers off **streaming** responses. The monitor still notes the stream shape — a cached answer is replayed as one chunk, a live one arrives token by token — as `"cacheSource": "inferred"` (`HIT ~` / `MISS ~`). Tokens charged and credits remaining are only available when the headers are present.
 
-When a response actually carries `X-Cache-Hit: true` or `X-Cache-Status: HIT`, the chat adds a small "instant" mark on that answer. Inferred hits stay in the monitor and are not marked in the chat. Tokens, credits, and the raw log stay server-side.
+The chat shows "instant" when a header says hit (`X-Cache-Hit: true` or `X-Cache-Status: HIT`). With no header, it shows "instant" only for a repeat of the exact same prompt whose first token arrived within 400ms and whose body matches the previous answer or came back as a single chunk. The first time a prompt is seen is not marked. A header that says miss is trusted over that timing rule.
 
 ## Layout
 
 - `server.js` — static files, `/api/chat` streaming proxy, cache recorder, community routes
 - `lib/community.js` — local SQLite tips, votes, rate limits, daily cap
 - `lib/text.js` — keyword retrieval, spam rules, and the separate tip message
+- `lib/cache.js` — decides when a reply was served from cache
 - `knowledge/gta-vi-faq.md` — sourced fact sheet, loaded into the system prompt
 - `public/` — chat UI, `playbook.html`, and `monitor.html`

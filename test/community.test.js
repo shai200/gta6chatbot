@@ -8,6 +8,7 @@ import path from 'node:path';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { createStore } from '../lib/community.js';
+import { judgeRepeatCache } from '../lib/cache.js';
 import { checkTip, contextMessage, factChunks, matchFacts } from '../lib/text.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -33,9 +34,35 @@ test('fact sheet coverage stays narrow', () => {
   assert.equal(matchFacts('When did GTA VI come out?', CHUNKS).covered, true);
   assert.equal(matchFacts('Who are Jason and Lucia?', CHUNKS).covered, true);
   assert.equal(matchFacts('Is the PC date confirmed?', CHUNKS).covered, true);
+  assert.equal(matchFacts('Is GTA 6 on PC?', CHUNKS).covered, true);
   assert.equal(matchFacts('How much does the Ultimate Edition cost?', CHUNKS).covered, true);
   assert.equal(matchFacts('How do I lose a five star wanted level?', CHUNKS).covered, false);
   assert.equal(matchFacts('What is a fast way to make money early?', CHUNKS).covered, false);
+});
+
+test('a fast repeat of the same prompt counts as a cache hit, a first look does not', () => {
+  const seen = new Map();
+  const first = judgeRepeatCache(seen, {
+    promptKey: 'pc', output: 'Not officially.', ttfbMs: 160, contentChunks: 1, outputChars: 40,
+    headerKnown: false, headerHit: false,
+  });
+  const repeat = judgeRepeatCache(seen, {
+    promptKey: 'pc', output: 'Not officially.', ttfbMs: 177, contentChunks: 1, outputChars: 40,
+    headerKnown: false, headerHit: false,
+  });
+  const slow = judgeRepeatCache(seen, {
+    promptKey: 'pc', output: 'Not officially.', ttfbMs: 1501, contentChunks: 115, outputChars: 40,
+    headerKnown: false, headerHit: false,
+  });
+  const headerMiss = judgeRepeatCache(seen, {
+    promptKey: 'pc', output: 'Not officially.', ttfbMs: 20, contentChunks: 1, outputChars: 40,
+    headerKnown: true, headerHit: false,
+  });
+  assert.equal(first.hit, false);
+  assert.equal(repeat.hit, true);
+  assert.equal(repeat.source, 'timing');
+  assert.equal(slow.hit, false);
+  assert.equal(headerMiss.hit, false);
 });
 
 test('rules block links, slurs, and thin tips', () => {

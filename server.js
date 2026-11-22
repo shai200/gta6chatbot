@@ -8,6 +8,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { randomUUID } from 'node:crypto';
+import { judgeRepeatCache, promptKey } from './lib/cache.js';
 import { factChunks } from './lib/text.js';
 import { HttpError, createStore, validClientId } from './lib/community.js';
 
@@ -126,6 +127,7 @@ function tipCredits(tips) {
 // ───────────────────────── cache monitor ─────────────────────────
 
 const recent = []; // newest last
+const seenPrompts = new Map();
 const stats = newStats();
 
 function newStats() {
@@ -363,12 +365,27 @@ async function handleChat(req, res) {
     }
     if (!rec.outputChars) throw new Error(`Model "${MODEL}" returned an empty answer.`);
     inferCache(rec);
-    // Only a gateway cache header counts. Inferred hits stay in the monitor;
-    // marking them in the chat would guess, and the stream itself is unchanged.
-    const unknown = retrieved.unknown || full.includes('[[ADD_ONE]]');
+    const headerKnown = rec.cacheSource === 'header';
+    const judged = judgeRepeatCache(seenPrompts, {
+      promptKey: promptKey(MODEL, modelMessages),
+      output: full,
+      ttfbMs: rec.ttfbMs,
+      contentChunks: rec.contentChunks,
+      outputChars: rec.outputChars,
+      headerKnown,
+      headerHit: headerKnown && rec.cacheHit === true,
+    });
+    if (!headerKnown && judged.hit) {
+      rec.cacheHit = true;
+      rec.cacheStatus = 'HIT';
+      rec.cacheSource = 'timing';
+    }
+    // The add-one box follows the model's own marker, not the keyword guess.
+    // A correct fact-sheet answer must not be flagged just because retrieval was unsure.
+    const unknown = full.includes('[[ADD_ONE]]');
     send({
       type: 'done',
-      cacheHit: rec.cacheSource === 'header' && rec.cacheHit === true,
+      cacheHit: judged.hit,
       unknown,
       capped: false,
       tips: tipCredits(retrieved.tips),
