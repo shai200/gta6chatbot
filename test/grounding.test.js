@@ -67,6 +67,9 @@ test('fact sheet is sent unchanged, and only a cache header marks a hit', async 
       BETTERPROXY_API_KEY: 'test-not-a-real-key',
       BETTERPROXY_MODEL: 'gpt-5.4',
       CACHE_LOG_FILE: path.join(os.tmpdir(), `leonida-test-${process.pid}.jsonl`),
+      COMMUNITY_DB: path.join(os.tmpdir(), `leonida-community-${process.pid}.db`),
+      MODERATION_LLM: '0',
+      DAILY_REQUEST_CAP: '50',
       MONITOR_TOKEN: '',
     },
   });
