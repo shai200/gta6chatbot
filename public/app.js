@@ -107,13 +107,14 @@ async function ask(text) {
 
   controller = new AbortController();
   setStreaming(true);
-  let answer = '', failed = null, pending = false, fromCache = false;
+  let answer = '', failed = null, pending = false, fromCache = false, friendly = false;
+  let replyUnknown = false, replyTips = [];
   let settled = false;
   const paint = () => {
     pending = false;
     if (settled) return;
     const stick = nearBottom();
-    bubble.innerHTML = markdown(answer);
+    bubble.innerHTML = markdown(stripMarker(answer) || '…');
     bubble.classList.add('cursor');
     if (stick) toBottom();
   };
@@ -122,7 +123,7 @@ async function ask(text) {
     const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: history }),
+      body: JSON.stringify({ messages: history, clientId: clientId() }),
       signal: controller.signal,
     });
     if (!res.ok || !res.body) {
@@ -144,8 +145,14 @@ async function ask(text) {
         if (evt.type === 'delta') {
           answer += evt.text;
           if (!pending) { pending = true; requestAnimationFrame(paint); }
-        } else if (evt.type === 'done') fromCache = evt.cacheHit === true;
-        else if (evt.type === 'error') failed = evt.message;
+        } else if (evt.type === 'done') {
+          fromCache = evt.cacheHit === true;
+          replyUnknown = evt.unknown === true;
+          replyTips = Array.isArray(evt.tips) ? evt.tips : [];
+        } else if (evt.type === 'error') {
+          failed = evt.message;
+          friendly = evt.friendly === true;
+        }
       }
     }
   } catch (e) {
@@ -154,8 +161,11 @@ async function ask(text) {
 
   settled = true;
   bubble.classList.remove('cursor');
-  if (answer) {
-    bubble.innerHTML = markdown(answer);
+  const shown = stripMarker(answer);
+  const unknown = replyUnknown || answer.includes('[[ADD_ONE]]');
+  if (shown || unknown) {
+    const textOut = shown || "We don't have this one yet. If you've seen it in Leonida, add it for the next player.";
+    bubble.innerHTML = markdown(textOut);
     if (fromCache) {
       const tag = document.createElement('div');
       tag.className = 'instant';
@@ -163,14 +173,24 @@ async function ask(text) {
       tag.innerHTML = '<span aria-hidden="true">⚡</span> instant';
       bubble.append(tag);
     }
-    history.push({ role: 'assistant', content: answer });
+    if (replyTips.length) {
+      const credit = document.createElement('div');
+      credit.className = 'tip-credits';
+      credit.innerHTML = replyTips.map((tip) => `<span>tip from the community (${esc(tip.nickname || 'a player')})</span>`).join('');
+      bubble.append(credit);
+    }
+    history.push({ role: 'assistant', content: textOut });
+    const follow = document.createElement('div');
+    follow.className = 'msg-follow';
+    follow.append(unknown ? tipForm(text, 'unknown') : suggestButton(text));
+    bubble.parentElement.append(follow);
   } else {
     bubble.parentElement.remove();
     if (!failed) history.pop(); // stopped before anything arrived
   }
   if (failed) {
     if (!answer) history.pop();
-    addMsg('bot error', `<p><strong>Signal dropped.</strong> ${esc(failed)}</p>`);
+    addMsg('bot error', friendly ? `<p>${esc(failed)}</p>` : `<p><strong>Signal dropped.</strong> ${esc(failed)}</p>`);
   }
   controller = null;
   setStreaming(false);
@@ -221,4 +241,111 @@ fetch('/api/health').then((r) => r.json()).then((h) => {
   if (!h.configured) { statusEl.classList.add('down'); $('statusText').textContent = 'API key missing'; }
 }).catch(() => {});
 
+const TOPIC_OPTIONS = [
+  ['missions', 'Missions'],
+  ['money', 'Money'],
+  ['vehicles', 'Vehicles'],
+  ['heat', 'Heat / wanted'],
+  ['secrets', 'Secrets'],
+  ['setup', 'Setup'],
+  ['other', 'Other'],
+];
+
+function clientId() {
+  const key = 'leonida-client';
+  let id = localStorage.getItem(key);
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id || '')) {
+    id = crypto.randomUUID();
+    localStorage.setItem(key, id);
+  }
+  return id;
+}
+
+function stripMarker(s) {
+  return String(s || '').replace(/\[\[ADD_ONE\]\]/g, '').replace(/\n{3,}/g, '\n\n').trim();
+}
+
+function tipForm(question, mode) {
+  const box = document.createElement('form');
+  box.className = 'tip-form';
+  box.innerHTML = `
+    <p class="tip-form-title">${mode === 'unknown' ? "We don't know yet. Add one." : 'Suggest a tip or a correction.'}</p>
+    <p class="tip-form-note">${mode === 'unknown' ? 'Seen it in Leonida? Leave it for the next player. No sign-up.' : 'Players helping players. No sign-up.'}</p>
+    <label>Your tip<textarea name="body" required minlength="30" maxlength="700" placeholder="What worked for you, in a sentence or two."></textarea></label>
+    <div class="tip-form-row">
+      <label>Nickname <span>(optional)</span><input name="nickname" maxlength="20" placeholder="ViceKid" autocomplete="off"></label>
+      <label>Topic<select name="topic">${TOPIC_OPTIONS.map(([id, label]) => `<option value="${id}">${label}</option>`).join('')}</select></label>
+    </div>
+    <label class="check"><input type="checkbox" name="spoiler"> This has spoilers</label>
+    <button type="submit">Add this tip</button>
+    <p class="tip-form-error" hidden></p>`;
+  box.elements.topic.value = guessTopic(question);
+  box.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const err = box.querySelector('.tip-form-error');
+    const button = box.querySelector('button');
+    err.hidden = true;
+    button.disabled = true;
+    try {
+      const res = await fetch('/api/community/tips', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question,
+          body: box.elements.body.value,
+          nickname: box.elements.nickname.value,
+          topic: box.elements.topic.value,
+          spoiler: box.elements.spoiler.checked,
+          clientId: clientId(),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Could not add that');
+      const done = document.createElement('p');
+      done.className = 'tip-form-done';
+      done.textContent = 'Added. It shows on the playbook as an unverified community tip until other players upvote it.';
+      box.replaceWith(done);
+      refreshStats();
+    } catch (error) {
+      err.hidden = false;
+      err.textContent = error.message;
+      button.disabled = false;
+    }
+  });
+  return box;
+}
+
+function guessTopic(text) {
+  const rules = [
+    ['heat', /cop|police|wanted|heat|busted/i],
+    ['money', /money|cash|earn|dollar/i],
+    ['vehicles', /car|vehicle|bike|garage|drive/i],
+    ['secrets', /secret|collectible|cheat|hidden/i],
+    ['setup', /setting|fps|graphics|storage|install/i],
+    ['missions', /mission|heist|story|quest/i],
+  ];
+  return rules.find(([, re]) => re.test(text))?.[0] || 'other';
+}
+
+function suggestButton(question) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'suggest';
+  button.textContent = 'Suggest a tip';
+  button.addEventListener('click', () => button.replaceWith(tipForm(question, 'suggest')));
+  return button;
+}
+
+async function refreshStats() {
+  try {
+    const stats = await fetch('/api/community/stats').then((r) => r.json());
+    const label = `${stats.shared} tip${stats.shared === 1 ? '' : 's'} shared`;
+    $('tipCount').textContent = label;
+    $('tipCountBar').textContent = label;
+    $('contributors').innerHTML = (stats.contributors || []).map((c) => `<li>${esc(c.nickname)} · ${c.upvotes} upvotes</li>`).join('');
+  } catch { /* the chat still works if stats are briefly unavailable */ }
+}
+
+refreshStats();
+setInterval(refreshStats, 30000);
 refreshSend();

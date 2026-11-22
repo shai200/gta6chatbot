@@ -8,6 +8,8 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { randomUUID } from 'node:crypto';
+import { factChunks } from './lib/text.js';
+import { HttpError, createStore, validClientId } from './lib/community.js';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 if (existsSync(path.join(ROOT, '.env'))) process.loadEnvFile(path.join(ROOT, '.env'));
@@ -24,6 +26,17 @@ const FACT_SHEET_PATH = path.join(ROOT, 'knowledge', 'gta-vi-faq.md');
 const MAX_HISTORY = 30;
 const RECENT_LIMIT = 200;
 
+function numEnv(name, fallback) {
+  const raw = process.env[name];
+  if (raw == null || raw === '') return fallback;
+  const n = Number(raw);
+  return Number.isFinite(n) && n >= 0 ? Math.floor(n) : fallback;
+}
+
+const COMMUNITY_DB = path.resolve(ROOT, process.env.COMMUNITY_DB || path.join('data', 'community.db'));
+const DAILY_REQUEST_CAP = numEnv('DAILY_REQUEST_CAP', 150);
+const MODERATION_LLM = process.env.MODERATION_LLM !== '0';
+
 // Read once, at startup, and reuse the same string on every request. A stable
 // system prompt is what lets BetterProxy cache repeat questions.
 const FACT_SHEET = readFileSync(FACT_SHEET_PATH, 'utf8').trim();
@@ -38,7 +51,9 @@ Rules:
 - Be accurate. Lead with the answer, then a short detail. Use markdown (bold, lists) sparingly.
 - If the fact sheet labels something a RUMOUR, or says it is unconfirmed, present it as a rumour or an unconfirmed report. Never state a rumour as fact.
 - PC: Rockstar has not announced a PC version or a PC release date. The reported first-quarter-2027 window is a rumour from media citing anonymous sources. If you mention it, call it a rumour in the same breath. Never give it as a release date.
-- If a question is not covered by the fact sheet, or you are not sure, say so honestly. Do not invent release dates, platforms, prices, editions, characters, voice actors, online or multiplayer modes, DLC, PC dates, system requirements, sales, mission lists, map secrets, cheats, collectibles, controls, or detailed gameplay tips. The game is newly out; gaps are expected. Do not fill them from older GTA games or from guesswork. Say what the sheet does confirm, then stop.
+- If a question is not covered by the fact sheet, or by a community-tips message later in the conversation, say so honestly. Do not invent release dates, platforms, prices, editions, characters, voice actors, online or multiplayer modes, DLC, PC dates, system requirements, sales, mission lists, map secrets, cheats, collectibles, controls, or detailed gameplay tips. The game is newly out; gaps are expected. Do not fill them from older GTA games or from guesswork. Say what the sheet does confirm, then stop.
+- When a later message lists community tips, you may use them. Credit each one you use with the exact words "tip from the community (nickname)". The fact sheet wins if a tip disagrees with it. A tip never turns a rumour into a fact.
+- If you cannot answer from the fact sheet or those community tips, say so and end your reply with the exact line [[ADD_ONE]].
 - Treat the "Unknown or not announced" section as closed. Say that it is not announced or not something you can confirm.
 - Keep every answer spoiler-safe. Do not reveal or invent story beats, mission outcomes, endings, twists, or secrets. The fact sheet's premise is the whole story you may tell. If a player asks for spoilers, say you stick to the spoiler-free setup.
 - The line about the game being the highest-rated of all time is Take-Two's own press-release claim. Attribute it to Take-Two. Do not state it as an independent fact.
@@ -52,6 +67,61 @@ Rules:
 Fact sheet (follow it exactly):
 
 ` + FACT_SHEET;
+
+const MOD_PROMPT = `You screen one fan tip for a GTA VI helper. Reply with one word, ALLOW or REJECT.
+REJECT spam, ads, links, scams, slurs, harassment, nonsense, and anything that is not about the game.
+ALLOW ordinary gameplay tips. Spoilers are ALLOW. Rough language that is not a slur is ALLOW.`;
+
+const community = createStore(COMMUNITY_DB, {
+  factChunks: factChunks(FACT_SHEET),
+  trustUpvotes: numEnv('TRUST_UPVOTES', 3),
+  hideFlags: numEnv('HIDE_FLAGS', 3),
+  questionLimit: numEnv('QUESTION_LIMIT', 20),
+  questionWindowSec: numEnv('QUESTION_WINDOW_SEC', 600),
+  tipLimit: numEnv('TIP_LIMIT', 8),
+  tipWindowSec: numEnv('TIP_WINDOW_SEC', 3600),
+  voteLimit: numEnv('VOTE_LIMIT', 60),
+  voteWindowSec: numEnv('VOTE_WINDOW_SEC', 3600),
+  dailyCap: DAILY_REQUEST_CAP,
+  moderate: moderateTip,
+});
+
+function clientIp(req) {
+  const forwarded = req.headers['x-forwarded-for'];
+  if (typeof forwarded === 'string' && forwarded.trim()) return forwarded.split(',')[0].trim();
+  return req.socket.remoteAddress || 'unknown';
+}
+
+async function moderateTip(question, body) {
+  if (!MODERATION_LLM || !API_KEY) return null;
+  if (!community.trySpend()) return null;
+  try {
+    const res = await fetch(`${BASE_URL}/chat/completions`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${API_KEY}` },
+      body: JSON.stringify({
+        model: MODEL,
+        stream: false,
+        messages: [
+          { role: 'system', content: MOD_PROMPT },
+          { role: 'user', content: `Question: ${question}\nTip: ${body}` },
+        ],
+      }),
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const text = data?.choices?.[0]?.message?.content || '';
+    if (/^\s*reject\b/i.test(text)) return 'reject';
+    if (/^\s*allow\b/i.test(text)) return 'allow';
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function tipCredits(tips) {
+  return (tips || []).map((tip) => ({ id: tip.id, nickname: tip.credit || tip.nickname || 'a player' }));
+}
 
 // ───────────────────────── cache monitor ─────────────────────────
 
@@ -212,14 +282,40 @@ async function handleChat(req, res) {
   let finished = false;
   res.on('close', () => { if (!finished) { rec.aborted = true; ac.abort(); } });
 
+  const ip = clientIp(req);
+  const clientId = validClientId(body.clientId) ? body.clientId : '';
+  let full = '';
+
   try {
+    if (!community.questionAllowed(ip, clientId)) {
+      rec.error = 'question rate limit';
+      send({ type: 'error', friendly: true, message: "That's a lot of questions in a short stretch. Take a breath and ask again in a few minutes." });
+      return;
+    }
+
+    const retrieved = community.retrieve(lastUser.content);
+    const extra = community.contextMessage(retrieved);
+    const modelMessages = [{ role: 'system', content: SYSTEM_PROMPT }, ...(extra ? [extra] : []), ...messages];
+
     if (!API_KEY) throw new Error('BETTERPROXY_API_KEY is not set on the server. Add it to .env and restart.');
+
+    if (!community.trySpend()) {
+      const local = community.localAnswer(lastUser.content, retrieved);
+      full = local.text;
+      rec.outputChars = full.length;
+      rec.cacheHit = false;
+      rec.cacheSource = 'local';
+      rec.contentChunks = 1;
+      send({ type: 'delta', text: full });
+      send({ type: 'done', cacheHit: false, unknown: local.unknown, capped: true, tips: tipCredits(retrieved.tips) });
+      return;
+    }
 
     const upstream = await fetch(`${BASE_URL}/chat/completions`, {
       method: 'POST',
       signal: ac.signal,
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${API_KEY}`, Accept: 'text/event-stream' },
-      body: JSON.stringify({ model: MODEL, stream: true, messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages] }),
+      body: JSON.stringify({ model: MODEL, stream: true, messages: modelMessages }),
     });
     rec.httpStatus = upstream.status;
     Object.assign(rec, readCacheHeaders(upstream.headers));
@@ -233,6 +329,7 @@ async function handleChat(req, res) {
     const emit = (text) => {
       if (!text) return;
       if (rec.ttfbMs == null) rec.ttfbMs = Math.round(performance.now() - started);
+      full += text;
       rec.outputChars += text.length;
       rec.contentChunks++;
       send({ type: 'delta', text });
@@ -268,7 +365,14 @@ async function handleChat(req, res) {
     inferCache(rec);
     // Only a gateway cache header counts. Inferred hits stay in the monitor;
     // marking them in the chat would guess, and the stream itself is unchanged.
-    send({ type: 'done', cacheHit: rec.cacheSource === 'header' && rec.cacheHit === true });
+    const unknown = retrieved.unknown || full.includes('[[ADD_ONE]]');
+    send({
+      type: 'done',
+      cacheHit: rec.cacheSource === 'header' && rec.cacheHit === true,
+      unknown,
+      capped: false,
+      tips: tipCredits(retrieved.tips),
+    });
   } catch (e) {
     if (!rec.aborted) {
       rec.error = e.message;
@@ -292,7 +396,7 @@ function json(res, code, obj) {
 }
 
 async function serveStatic(res, pathname) {
-  const rel = pathname === '/' ? 'index.html' : pathname === '/monitor' ? 'monitor.html' : pathname.slice(1);
+  const rel = pathname === '/' ? 'index.html' : pathname === '/monitor' ? 'monitor.html' : pathname === '/playbook' ? 'playbook.html' : pathname.slice(1);
   const file = path.normalize(path.join(PUBLIC_DIR, rel));
   if (!file.startsWith(PUBLIC_DIR + path.sep)) return json(res, 403, { error: 'Forbidden' });
   try {
@@ -311,6 +415,31 @@ http.createServer(async (req, res) => {
   const p = url.pathname;
   try {
     if (req.method === 'POST' && p === '/api/chat') return await handleChat(req, res);
+    if (p === '/api/community/stats' && req.method === 'GET') return json(res, 200, community.stats());
+    if (p === '/api/community/tips' && req.method === 'GET') {
+      return json(res, 200, { tips: community.list({ topic: url.searchParams.get('topic') || '', q: url.searchParams.get('q') || '', clientId: url.searchParams.get('clientId') || '' }) });
+    }
+    if (p === '/api/community/tips' && req.method === 'POST') {
+      const body = await readJson(req);
+      try {
+        const tip = await community.submit({ ...body, ip: clientIp(req) });
+        return json(res, 201, { tip });
+      } catch (error) {
+        if (error instanceof HttpError) return json(res, error.status, { error: error.message });
+        throw error;
+      }
+    }
+    const voteMatch = p.match(/^\/api\/community\/tips\/([0-9a-f-]{36})\/vote$/i);
+    if (voteMatch && req.method === 'POST') {
+      const body = await readJson(req);
+      try {
+        const tip = community.vote({ id: voteMatch[1], clientId: body.clientId, kind: body.kind, ip: clientIp(req) });
+        return json(res, 200, { tip });
+      } catch (error) {
+        if (error instanceof HttpError) return json(res, error.status, { error: error.message });
+        throw error;
+      }
+    }
     if (req.method === 'GET' && p === '/api/health') return json(res, 200, { ok: true, configured: Boolean(API_KEY), model: MODEL });
     if (req.method === 'GET' && (p === '/api/cache/stats' || p === '/api/cache/logs' || p === '/monitor')) {
       if (!monitorAllowed(url)) return json(res, 401, { error: 'Monitor token required (?token=...)' });
@@ -328,6 +457,8 @@ http.createServer(async (req, res) => {
   console.log(`Cache monitor         → http://localhost:${PORT}/monitor`);
   console.log(`BetterProxy           → ${BASE_URL}  (model: ${MODEL})`);
   console.log(`Fact sheet            → ${FACT_SHEET_PATH} (${FACT_SHEET.length} chars)`);
+  console.log(`Community tips        → ${COMMUNITY_DB}  (daily model cap: ${DAILY_REQUEST_CAP})`);
+  console.log(`Playbook              → http://localhost:${PORT}/playbook`);
   console.log(`Cache log             → ${LOG_FILE}`);
   if (!API_KEY) console.warn('⚠  BETTERPROXY_API_KEY is not set — chat requests will fail until you add it to .env');
 });

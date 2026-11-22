@@ -8,7 +8,7 @@ Unofficial fan-made project. Not affiliated with or endorsed by Rockstar Games o
 
 ## Run
 
-Requires Node 21.7+ (no dependencies to install).
+Requires Node 22.5+ (no dependencies to install; tips use Node's built-in SQLite).
 
 ```bash
 cp .env.example .env   # then put your BetterProxy key in BETTERPROXY_API_KEY
@@ -28,6 +28,42 @@ npm start
 | `PORT` / `HOST` | `3000` / `0.0.0.0` | Where the server listens. |
 | `MONITOR_TOKEN` | – | If set, the monitor requires `/monitor?token=…`. |
 | `CACHE_LOG_FILE` | `logs/cache.jsonl` | Where cache records are appended. |
+| `COMMUNITY_DB` | `data/community.db` | Local SQLite file for player tips. |
+| `DAILY_REQUEST_CAP` | `150` | Model calls per UTC day, including the optional tip check. `0` never calls the model. |
+| `QUESTION_LIMIT` | `20` | Questions per IP (and per browser) per window. |
+| `QUESTION_WINDOW_SEC` | `600` | Window for `QUESTION_LIMIT`. |
+| `TIP_LIMIT` | `8` | New tips per IP and per browser per window. |
+| `TIP_WINDOW_SEC` | `3600` | Window for `TIP_LIMIT`. |
+| `VOTE_LIMIT` | `60` | Votes per IP and per browser per window. |
+| `VOTE_WINDOW_SEC` | `3600` | Window for `VOTE_LIMIT`. |
+| `TRUST_UPVOTES` | `3` | Net upvotes before a tip is trusted and shown to the bot. |
+| `HIDE_FLAGS` | `3` | Flags that hide a tip. A bad flag-to-upvote ratio hides one too. |
+| `MODERATION_LLM` | on | Set to `0` to skip the optional BetterProxy tip check. Rules still run. |
+
+## Community playbook
+
+Players can leave a tip when the bot does not know, or suggest one under any answer. No account. A nickname is optional. The browser keeps an anonymous id, and the server rate-limits by that id and by a hash of the IP. Raw IPs are not stored.
+
+New tips are labelled "unverified community tip". After 3 net upvotes they are trusted. Three flags, or a lopsided flag ratio, hides a tip. There is no manual moderation. A rule filter blocks links, slurs, profanity, and repeats. If a BetterProxy key is set, one short cached check can also reject a tip; if that call fails or the daily cap is already spent, the rules stand and the tip is still accepted.
+
+Trusted tips that match a question are added in a separate message, after the stable system prompt, and credited as "tip from the community (nickname)". The fact sheet wins if a tip disagrees with it. Spoiler-marked tips stay out of answers unless the player asked for spoilers.
+
+The playbook is at `/playbook`, sorted by votes, with search and topic filters.
+
+## Railway
+
+Deploy the repo the way it already deploys. No new service, database plugin, or env var is required, and none of this asks for a credit card.
+
+Tips are written to `data/community.db` on the service disk. That disk is ephemeral: tips last until the next deploy or container replacement. That path costs nothing extra.
+
+To keep tips across deploys, stay on Railway's Free plan (no card; it includes one 0.5 GB volume and $1 of usage a month):
+
+1. Add a volume to the existing service and mount it at `/data`.
+2. Set one variable: `COMMUNITY_DB=/data/community.db`.
+
+Volume storage is billed at Railway's usual rate and drawn from the included $1. A tips file stays far under a megabyte, so this is a fraction of a cent, not a card charge. Do not upgrade to Hobby for this. Hobby is $5 a month and requires a card. Do not add Postgres, Supabase, or Turso.
+
+If the daily model cap is hit, chat stops calling BetterProxy and answers from the fact sheet and trusted tips only, with a short note. Set `DAILY_REQUEST_CAP=0` to never call the model.
 
 ## Fact sheet
 
@@ -49,6 +85,8 @@ When a response actually carries `X-Cache-Hit: true` or `X-Cache-Status: HIT`, t
 
 ## Layout
 
-- `server.js` — static files, `/api/chat` streaming proxy, cache recorder
+- `server.js` — static files, `/api/chat` streaming proxy, cache recorder, community routes
+- `lib/community.js` — local SQLite tips, votes, rate limits, daily cap
+- `lib/text.js` — keyword retrieval, spam rules, and the separate tip message
 - `knowledge/gta-vi-faq.md` — sourced fact sheet, loaded into the system prompt
-- `public/` — chat UI (`index.html`, `styles.css`, `app.js`) and `monitor.html`
+- `public/` — chat UI, `playbook.html`, and `monitor.html`
